@@ -1,7 +1,9 @@
 # fontgraphy
 
-The `fontgraphy` package for Flutter allows you to easily use any of the 977 fonts
-(and their variants) from [fonts.google.com](https://fonts.google.com/) in your Flutter app.
+WIP
+
+The `fontgraphy` package for Flutter allows you to easily use any of the fonts
+(and their variants) from [fontgraphy.ir](https://fontgraphy.ir) in your Flutter app.
 
 ## Getting Started
 
