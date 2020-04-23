@@ -46,12 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
-              style: GoogleFonts.oswald(textStyle: display1),
+              'این یک متن آزمایشی می باشد.',
+              style: GoogleFonts.titrzebr(fontSize: 25),
+              textDirection: TextDirection.rtl,
             ),
             Text(
-              '$_counter',
-              style: GoogleFonts.lato(fontStyle: FontStyle.italic),
+              '$_counter'
             ),
           ],
         ),

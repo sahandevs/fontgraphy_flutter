@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:console/console.dart';
@@ -9,93 +10,63 @@ import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:mustache/mustache.dart';
 
-import 'fonts.pb.dart';
+const _generatedFilePath = './lib/google_fonts.dart';
 
-const _generatedFilePath = 'lib/google_fonts.dart';
+class FontInfo {
+  String id;
+  String family;
+  String familyInPersian;
+  int size;
+
+  FontInfo.fromJson(Map data) {
+    id = data["_id"] as String;
+    family = data["family"] as String;
+    familyInPersian = data["familyInPersian"] as String;
+    size = data["size"] as int;
+  }
+}
 
 /// Generates the `GoogleFonts` class.
 Future<void> main() async {
-  print('Getting latest font directory...');
-  final protoUrl = await _getProtoUrl();
-  print('Success! Using $protoUrl');
+  print('Getting latest fonts...');
+  final url = "https://api.fontgraphy.ir/metadata/fonts";
+  print('Using $url');
 
-  final fontDirectory = await _readFontsProtoData(protoUrl);
+  final fonts = await _getAllFonts(url);
+  print("Found ${fonts.length} fonts");
   print('\nValidating font URLs and file contents...');
-  await _verifyUrls(fontDirectory);
+  await _verifyFonts(fonts);
   print(_success);
 
   print('\nGenerating $_generatedFilePath...');
-  await _writeDartFile(_generateDartCode(fontDirectory));
+  await _writeDartFile(_generateDartCode(fonts));
   print(_success);
-
-  print('\nFormatting $_generatedFilePath...');
-  await Process.run('flutter', ['format', _generatedFilePath]);
-  print(_success);
+//
+//  print('\nFormatting $_generatedFilePath...');
+//  await Process.run('flutter', ['format', _generatedFilePath]);
+//  print(_success);
 }
 
 const _success = 'Success!';
 
-/// Gets the latest font directory.
-///
-/// Versioned directories are hosted on the Google Fonts server. We try to fetch
-/// each directory one by one until we hit the last one. We know we reached the
-/// end if requesting the next version results in a 404 response.
-/// Other types of failure should not occur. For example, if the internet
-/// connection gets lost while downloading the directories, we just crash. But
-/// that's okay for now, because the generator is only executed in trusted
-/// environments by individual developers.
-Future<String> _getProtoUrl({int initialVersion = 1}) async {
-  var directoryVersion = initialVersion;
-
-  String url(int directoryVersion) {
-    final paddedVersion = directoryVersion.toString().padLeft(3, '0');
-    return 'http://fonts.gstatic.com/s/f/directory$paddedVersion.pb';
-  }
-
-  var didReachLatestUrl = false;
-  final httpClient = http.Client();
-  while (!didReachLatestUrl) {
-    final response = await httpClient.get(url(directoryVersion));
-    if (response.statusCode == 200) {
-      directoryVersion += 1;
-    } else if (response.statusCode == 404) {
-      didReachLatestUrl = true;
-      directoryVersion -= 1;
-    } else {
-      throw Exception('Request failed: $response');
-    }
-  }
-  httpClient.close();
-
-  return url(directoryVersion);
-}
-
-Future<void> _verifyUrls(Directory fontDirectory) async {
-  final totalFonts =
-      fontDirectory.family.map((f) => f.fonts.length).reduce((a, b) => a + b);
-  final progressBar = ProgressBar(complete: totalFonts);
+Future<void> _verifyFonts(List<FontInfo> fonts) async {
+  final progressBar = ProgressBar(complete: fonts.length);
 
   final client = http.Client();
-  for (final family in fontDirectory.family) {
-    for (final font in family.fonts) {
-      final urlString =
-          'https://fonts.gstatic.com/s/a/${_hashToString(font.file.hash)}.ttf';
-      await _tryUrl(client, urlString, font);
-      progressBar.update(progressBar.current + 1);
-    }
+  for (final font in fonts) {
+    final urlString = 'https://api.fontgraphy.ir/static/fonts/${font
+        .family}/${font.family}.ttf';
+    await _tryUrl(client, urlString, font);
+    progressBar.update(progressBar.current + 1);
   }
   client.close();
 }
 
-Future<void> _tryUrl(http.Client client, String url, Font font) async {
+Future<void> _tryUrl(http.Client client, String url, FontInfo font) async {
   try {
-    final fileContents = await client.get(url);
-    final actualFileLength = fileContents.bodyBytes.length;
-    final actualFileHash = sha256.convert(fileContents.bodyBytes).toString();
-    if (font.file.fileSize != actualFileLength ||
-        _hashToString(font.file.hash) != actualFileHash) {
-      throw Exception('Font from $url did not match length of or checksum.');
-    }
+//    final fileContents = await client.get(url);
+//    print("[${font.family}]: ${fileContents.contentLength} bytes");
+  // TODO: add verify step
   } catch (e) {
     print('Failed to load font from url: $url');
     rethrow;
@@ -111,11 +82,11 @@ String _hashToString(List<int> bytes) {
   return fileName;
 }
 
-String _generateDartCode(Directory fontDirectory) {
+String _generateDartCode(List<FontInfo> fonts) {
   final methods = <Map<String, dynamic>>[];
 
-  for (final item in fontDirectory.family) {
-    final family = item.name;
+  for (final item in fonts) {
+    final family = item.family;
     final familyNoSpaces = family.replaceAll(' ', '');
     final familyWithPlusSigns = family.replaceAll(' ', '+');
     final methodName = _familyToMethodName(family);
@@ -142,13 +113,11 @@ String _generateDartCode(Directory fontDirectory) {
       'fontFamilyDisplay': family,
       'docsUrl': 'https://fonts.google.com/specimen/$familyWithPlusSigns',
       'fontUrls': [
-        for (final variant in item.fonts)
           {
-            'variantWeight': variant.weight.start,
-            'variantStyle':
-                variant.italic.start.round() == 1 ? 'italic' : 'normal',
-            'hash': _hashToString(variant.file.hash),
-            'length': variant.file.fileSize,
+            'variantWeight': 400,
+            'variantStyle': 'normal',
+            'hash': item.family,
+            'length': 0,
           },
       ],
       'themeParams': [
@@ -180,7 +149,9 @@ String _familyToMethodName(String family) {
   return words.join();
 }
 
-Future<Directory> _readFontsProtoData(String protoUrl) async {
-  final fontsProtoFile = await http.get(protoUrl);
-  return Directory.fromBuffer(fontsProtoFile.bodyBytes);
+Future<List<FontInfo>> _getAllFonts(String url) async {
+  final fontsProtoFile = await http.get(url);
+  return (jsonDecode(fontsProtoFile.body)["fonts"] as List)
+      .map((dynamic e) => FontInfo.fromJson(e as Map))
+      .toList();
 }
