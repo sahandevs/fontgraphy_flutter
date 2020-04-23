@@ -7,7 +7,7 @@ The `fontgraphy` package for Flutter allows you to easily use any of the fonts
 
 ## Getting Started
 
-![](https://raw.githubusercontent.com/material-foundation/google-fonts-flutter/master/readme_images/main.gif)
+![](https://raw.githubusercontent.com/sahandevs/fontgraphy_flutter/master/readme_images/main.gif)
 
 With the `fontgraphy` package, `.ttf` or `.otf` files do not need to be stored in your assets folder and mapped in
 the pubspec. Instead, they can be fetched once via http at runtime, and cached in the app's file system. This is ideal for development, and can be the preferred behavior for production apps that
