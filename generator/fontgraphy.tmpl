@@ -6,34 +6,34 @@
 
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'src/google_fonts_base.dart';
-import 'src/google_fonts_descriptor.dart';
-import 'src/google_fonts_variant.dart';
+import 'src/fontgraphy_base.dart';
+import 'src/fontgraphy_descriptor.dart';
+import 'src/fontgraphy_variant.dart';
 
 /// A collection of properties used to specify custom behavior of the
-/// GoogleFonts library.
+/// Fontgraphy library.
 class _Config {
-  /// Whether or not the GoogleFonts library can make requests to
+  /// Whether or not the Fontgraphy library can make requests to
   /// [fonts.google.com](https://fonts.google.com/) to retrieve font files.
   var allowRuntimeFetching = true;
 }
 
-class GoogleFonts {
-  /// Configuration for the [GoogleFonts] library.
+class Fontgraphy {
+  /// Configuration for the [Fontgraphy] library.
   ///
-  /// Use this to define custom behavior of the GoogleFonts library in your app.
-  /// For example, if you do not want the GoogleFonts library to make any http
+  /// Use this to define custom behavior of the Fontgraphy library in your app.
+  /// For example, if you do not want the Fontgraphy library to make any http
   /// requests for fonts, add the following snippet to your app's `main` method.
   ///
   /// ```dart
-  /// GoogleFonts.config.allowRuntimeFetching = false;
+  /// Fontgraphy.config.allowRuntimeFetching = false;
   /// ```
   static final config = _Config();
 
   /// Get a map of all available fonts.
   ///
   /// Returns a map where the key is the name of the font family and the value
-  /// is the corresponding [GoogleFonts] method.
+  /// is the corresponding [Fontgraphy] method.
   static Map<String, TextStyle Function({
     TextStyle textStyle,
     Color color,
@@ -56,17 +56,17 @@ class GoogleFonts {
     double decorationThickness,
   })> asMap() => const {
     {{#method}}
-    '{{fontFamilyDisplay}}': GoogleFonts.{{methodName}},
+    '{{fontFamilyDisplay}}': Fontgraphy.{{methodName}},
     {{/method}}
   };
 
   /// Get a map of all available fonts and their associated text themes.
   ///
   /// Returns a map where the key is the name of the font family and the value
-  /// is the corresponding [GoogleFonts] `TextTheme` method.
+  /// is the corresponding [Fontgraphy] `TextTheme` method.
   static Map<String, TextTheme Function([TextTheme])> _asMapOfTextThemes() => const {
     {{#method}}
-    '{{fontFamilyDisplay}}': GoogleFonts.{{methodName}}TextTheme,
+    '{{fontFamilyDisplay}}': Fontgraphy.{{methodName}}TextTheme,
     {{/method}}
   };
 
@@ -101,7 +101,7 @@ class GoogleFonts {
     double decorationThickness,
   }) {
     assert(fontFamily != null);
-    final fonts = GoogleFonts.asMap();
+    final fonts = Fontgraphy.asMap();
     if (!fonts.containsKey(fontFamily)) {
       throw Exception("No font family by name '$fontFamily' was found.");
     }
@@ -173,13 +173,13 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
       {{#fontUrls}}
-      GoogleFontsVariant(fontWeight: FontWeight.w{{variantWeight}}, fontStyle: FontStyle.{{variantStyle}},): GoogleFontsFile('{{hash}}', {{length}},),
+      FontgraphyVariant(fontWeight: FontWeight.w{{variantWeight}}, fontStyle: FontStyle.{{variantStyle}},): FontgraphyFile('{{hash}}', {{length}},),
       {{/fontUrls}}
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: '{{fontFamily}}',
       color: color,
@@ -213,7 +213,7 @@ class GoogleFonts {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
       {{#themeParams}}
-      {{value}}: GoogleFonts.{{methodName}}(textStyle: textTheme?.{{value}}),
+      {{value}}: Fontgraphy.{{methodName}}(textStyle: textTheme?.{{value}}),
       {{/themeParams}}
     );
   }

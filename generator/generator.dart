@@ -10,7 +10,7 @@ import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:mustache/mustache.dart';
 
-const _generatedFilePath = './lib/google_fonts.dart';
+const _generatedFilePath = './lib/fontgraphy.dart';
 
 class FontInfo {
   String id;
@@ -26,7 +26,7 @@ class FontInfo {
   }
 }
 
-/// Generates the `GoogleFonts` class.
+/// Generates the `Fontgraphy` class.
 Future<void> main() async {
   print('Getting latest fonts...');
   final url = "https://api.fontgraphy.ir/metadata/fonts";
@@ -111,7 +111,7 @@ String _generateDartCode(List<FontInfo> fonts) {
       'methodName': methodName,
       'fontFamily': familyNoSpaces,
       'fontFamilyDisplay': family,
-      'docsUrl': 'https://fonts.google.com/specimen/$familyWithPlusSigns',
+      'docsUrl': 'https://fontgraphy.ir/',
       'fontUrls': [
           {
             'variantWeight': 400,
@@ -127,7 +127,7 @@ String _generateDartCode(List<FontInfo> fonts) {
   }
 
   final template = Template(
-    File('generator/google_fonts.tmpl').readAsStringSync(),
+    File('generator/fontgraphy.tmpl').readAsStringSync(),
     htmlEscapeValues: false,
   );
   return template.renderString({'method': methods});

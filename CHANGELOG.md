@@ -37,11 +37,11 @@
 
 ## [0.5.0] - 2020-04-14
 
-* Use more accurate naming algorithm for `GoogleFonts.foo` and `GoogleFonts.fooTextTheme`.
+* Use more accurate naming algorithm for `Fontgraphy.foo` and `Fontgraphy.fooTextTheme`.
 
 ## [0.4.3] - 2020-04-14
 
-* Add `GoogleFonts.getTextTheme(...)` method for dynamically getting a text theme from a font name. 
+* Add `Fontgraphy.getTextTheme(...)` method for dynamically getting a text theme from a font name.
 
 ## [0.4.2] - 2020-04-14
 
@@ -75,7 +75,7 @@ Update Fonts API url in generator to add in missing fonts.
 
 ## [0.3.6] - 2020-01-31
 
-* Add a config to the `GoogleFonts` class with an `allowHttp` option.
+* Add a config to the `Fontgraphy` class with an `allowHttp` option.
 
 ## [0.3.5] - 2020-01-23
 
@@ -114,13 +114,13 @@ Update Fonts API url in generator to add in missing fonts.
 
 For example,
 
-`GoogleFonts.latoTextStyle(...)` is now `GoogleFonts.lato(...)`.
+`Fontgraphy.latoTextStyle(...)` is now `Fontgraphy.lato(...)`.
 
 ### Text theme parameters are now optional positional parameters (breaking change).
 
 For example,
 
-`GoogleFonts.latoTextTheme(textTheme: TextTheme(...))` is now `GoogleFonts.latoTextTheme(TextTheme(...))`.
+`Fontgraphy.latoTextTheme(textTheme: TextTheme(...))` is now `Fontgraphy.latoTextTheme(TextTheme(...))`.
 
 
 ## [0.1.0] - 2019-12-06
@@ -129,13 +129,13 @@ For example,
 
 For example,
 
-`GoogleFonts.lato(...)` is now `GoogleFonts.latoTextStyle(...)`.
+`Fontgraphy.lato(...)` is now `Fontgraphy.latoTextStyle(...)`.
 
 ### Text theme support
 
 Every font family now _also_ has a `TextTheme` method.
 
-For example, the `Lato` font now has `GoogleFonts.latoTextStyle()` and `GoogleFonts.latoTextTheme()`.
+For example, the `Lato` font now has `Fontgraphy.latoTextStyle()` and `Fontgraphy.latoTextTheme()`.
 
 See README for more examples.
 

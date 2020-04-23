@@ -14,11 +14,11 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:pedantic/pedantic.dart';
 
-import '../google_fonts.dart';
+import '../fontgraphy.dart';
 import 'asset_manifest.dart';
-import 'google_fonts_descriptor.dart';
-import 'google_fonts_family_with_variant.dart';
-import 'google_fonts_variant.dart';
+import 'fontgraphy_descriptor.dart';
+import 'fontgraphy_family_with_variant.dart';
+import 'fontgraphy_variant.dart';
 
 // Keep track of the fonts that are loaded or currently loading in FontLoader
 // for the life of the app instance. Once a font is attempted to load, it does
@@ -43,7 +43,7 @@ void clearCache() => _loadedFonts.clear();
 ///
 /// This function has a side effect of loading the font into the [FontLoader],
 /// either by network or from the device file system.
-TextStyle googleFontsTextStyle({
+TextStyle fontgraphyTextStyle({
   @required String fontFamily,
   TextStyle textStyle,
   Color color,
@@ -64,7 +64,7 @@ TextStyle googleFontsTextStyle({
   Color decorationColor,
   TextDecorationStyle decorationStyle,
   double decorationThickness,
-  @required Map<GoogleFontsVariant, GoogleFontsFile> fonts,
+  @required Map<FontgraphyVariant, FontgraphyFile> fonts,
 }) {
   assert(fontFamily != null);
   assert(fonts != null);
@@ -91,17 +91,17 @@ TextStyle googleFontsTextStyle({
     decorationThickness: decorationThickness,
   );
 
-  final variant = GoogleFontsVariant(
+  final variant = FontgraphyVariant(
     fontWeight: textStyle.fontWeight ?? FontWeight.w400,
     fontStyle: textStyle.fontStyle ?? FontStyle.normal,
   );
   final matchedVariant = _closestMatch(variant, fonts.keys);
-  final familyWithVariant = GoogleFontsFamilyWithVariant(
+  final familyWithVariant = FontgraphyFamilyWithVariant(
     family: fontFamily,
-    googleFontsVariant: matchedVariant,
+    fontgraphyVariant: matchedVariant,
   );
 
-  final descriptor = GoogleFontsDescriptor(
+  final descriptor = FontgraphyDescriptor(
     familyWithVariant: familyWithVariant,
     file: fonts[matchedVariant],
   );
@@ -114,7 +114,7 @@ TextStyle googleFontsTextStyle({
   );
 }
 
-/// Loads a font into the [FontLoader] with [googleFontsFamilyName] for the
+/// Loads a font into the [FontLoader] with [fontgraphyFamilyName] for the
 /// matching [expectedFileHash].
 ///
 /// If a font with the [fontName] has already been loaded into memory, then
@@ -124,7 +124,7 @@ TextStyle googleFontsTextStyle({
 /// as an asset, then on the device file system. If it isn't, it is fetched via
 /// the [fontUrl] and stored on device. In all cases, the font is loaded into
 /// the [FontLoader].
-Future<void> loadFontIfNecessary(GoogleFontsDescriptor descriptor) async {
+Future<void> loadFontIfNecessary(FontgraphyDescriptor descriptor) async {
   final familyWithVariantString = descriptor.familyWithVariant.toString();
   final fontName = descriptor.familyWithVariant.toApiFilenamePrefix();
   // If this font has already already loaded or is loading, then there is no
@@ -161,7 +161,7 @@ Future<void> loadFontIfNecessary(GoogleFontsDescriptor descriptor) async {
     }
 
     // Attempt to load this font via http, unless disallowed.
-    if (GoogleFonts.config.allowRuntimeFetching) {
+    if (Fontgraphy.config.allowRuntimeFetching) {
       byteData = _httpFetchFontAndSaveToDevice(
         familyWithVariantString,
         descriptor.file,
@@ -171,14 +171,14 @@ Future<void> loadFontIfNecessary(GoogleFontsDescriptor descriptor) async {
       }
     } else {
       throw Exception(
-        "GoogleFonts.config.allowRuntimeFetching is false but font $fontName was not "
+        "Fontgraphy.config.allowRuntimeFetching is false but font $fontName was not "
         "found in the application assets. Ensure $fontName.otf exists in a "
         "folder that is included in your pubspec's assets.",
       );
     }
   } catch (e) {
     _loadedFonts.remove(familyWithVariantString);
-    print('Error: google_fonts was unable to load font $fontName because the '
+    print('Error: fontgraphy was unable to load font $fontName because the '
         'following exception occured:\n$e');
   }
 }
@@ -199,18 +199,18 @@ Future<void> _loadFontByteData(
   }
 }
 
-/// Returns [GoogleFontsVariant] from [variantsToCompare] that most closely
+/// Returns [FontgraphyVariant] from [variantsToCompare] that most closely
 /// matches [sourceVariant] according to the [_computeMatch] scoring function.
 ///
 /// This logic is derived from the following section of the minikin library,
 /// which is ultimately how flutter handles matching fonts.
 /// https://github.com/flutter/engine/blob/master/third_party/txt/src/minikin/FontFamily.cpp#L149
-GoogleFontsVariant _closestMatch(
-  GoogleFontsVariant sourceVariant,
-  Iterable<GoogleFontsVariant> variantsToCompare,
+FontgraphyVariant _closestMatch(
+  FontgraphyVariant sourceVariant,
+  Iterable<FontgraphyVariant> variantsToCompare,
 ) {
   int bestScore;
-  GoogleFontsVariant bestMatch;
+  FontgraphyVariant bestMatch;
   for (final variantToCompare in variantsToCompare) {
     final score = _computeMatch(sourceVariant, variantToCompare);
     if (bestScore == null || score < bestScore) {
@@ -227,7 +227,7 @@ GoogleFontsVariant _closestMatch(
 /// This function can return `null` if the font fails to load from the URL.
 Future<ByteData> _httpFetchFontAndSaveToDevice(
   String fontName,
-  GoogleFontsFile file,
+  FontgraphyFile file,
 ) async {
   final uri = Uri.tryParse(file.url);
   if (uri == null) {
@@ -293,7 +293,7 @@ Future<ByteData> _loadFontFromDeviceFileSystem(String name) async {
 // This logic is taken from the following section of the minikin library, which
 // is ultimately how flutter handles matching fonts.
 // * https://github.com/flutter/engine/blob/master/third_party/txt/src/minikin/FontFamily.cpp#L128
-int _computeMatch(GoogleFontsVariant a, GoogleFontsVariant b) {
+int _computeMatch(FontgraphyVariant a, FontgraphyVariant b) {
   if (a == b) {
     return 0;
   }
@@ -307,7 +307,7 @@ int _computeMatch(GoogleFontsVariant a, GoogleFontsVariant b) {
 /// Looks for a matching [familyWithVariant] font, provided the asset manifest.
 /// Returns the path of the font asset if found, otherwise an empty string.
 String _findFamilyWithVariantAssetPath(
-  GoogleFontsFamilyWithVariant familyWithVariant,
+  FontgraphyFamilyWithVariant familyWithVariant,
   Map<String, List<String>> manifestJson,
 ) {
   if (manifestJson == null) return null;
@@ -329,7 +329,7 @@ String _findFamilyWithVariantAssetPath(
   return null;
 }
 
-bool _isFileSecure(GoogleFontsFile file, Uint8List bytes) {
+bool _isFileSecure(FontgraphyFile file, Uint8List bytes) {
   // TODO: implement
   return true;
 }

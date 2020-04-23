@@ -1,9 +1,9 @@
-Contributing to the google_fonts package.
+Contributing to the fontgraphy package.
 =========================================
 
-Thank you for your interest in contributing to the `google_fonts` package! We love receiving 
+Thank you for your interest in contributing to the `fontgraphy` package! We love receiving
 contributions, and your work helps the whole community. This doc will walk you through the easiest 
-way to make a change and have it submitted to the `google_fonts` package.
+way to make a change and have it submitted to the `fontgraphy` package.
 
 Developer workflow
 ------------------
@@ -33,7 +33,7 @@ repo.
  1. Create a PR to merge the branch on your fork into `google-fonts-flutter/master`.
  1. Add `johnsonmh` and `clocksmith` as reviewers on the PR. We will take a look and add any 
  comments. When the PR is ready to be merged, we will merge it and update the package on 
- [pub.dev](https://pub.dev/packages/google_fonts)! 
+ [pub.dev](https://pub.dev/packages/fontgraphy)!
  
 Updating the fonts
 ------------------

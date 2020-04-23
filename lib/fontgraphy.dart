@@ -5,36 +5,40 @@
 // found in the LICENSE file.
 
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
-import 'src/google_fonts_base.dart';
-import 'src/google_fonts_descriptor.dart';
-import 'src/google_fonts_variant.dart';
+
+import 'src/fontgraphy_base.dart';
+import 'src/fontgraphy_descriptor.dart';
+import 'src/fontgraphy_variant.dart';
 
 /// A collection of properties used to specify custom behavior of the
-/// GoogleFonts library.
+/// Fontgraphy library.
 class _Config {
-  /// Whether or not the GoogleFonts library can make requests to
+  /// Whether or not the Fontgraphy library can make requests to
   /// [fonts.google.com](https://fonts.google.com/) to retrieve font files.
   var allowRuntimeFetching = true;
 }
 
-class GoogleFonts {
-  /// Configuration for the [GoogleFonts] library.
+class Fontgraphy {
+  /// Configuration for the [Fontgraphy] library.
   ///
-  /// Use this to define custom behavior of the GoogleFonts library in your app.
-  /// For example, if you do not want the GoogleFonts library to make any http
+  /// Use this to define custom behavior of the Fontgraphy library in your app.
+  /// For example, if you do not want the Fontgraphy library to make any http
   /// requests for fonts, add the following snippet to your app's `main` method.
   ///
   /// ```dart
-  /// GoogleFonts.config.allowRuntimeFetching = false;
+  /// Fontgraphy.config.allowRuntimeFetching = false;
   /// ```
   static final config = _Config();
 
   /// Get a map of all available fonts.
   ///
   /// Returns a map where the key is the name of the font family and the value
-  /// is the corresponding [GoogleFonts] method.
-  static Map<String, TextStyle Function({
+  /// is the corresponding [Fontgraphy] method.
+  static Map<
+      String,
+      TextStyle Function({
     TextStyle textStyle,
     Color color,
     Color backgroundColor,
@@ -55,115 +59,117 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   })> asMap() => const {
-    'badr': GoogleFonts.badr,
-    'baran': GoogleFonts.baran,
-    'bardiya': GoogleFonts.bardiya,
-    'compset': GoogleFonts.compset,
-    'davat': GoogleFonts.davat,
-    'elham': GoogleFonts.elham,
-    'fantezy': GoogleFonts.fantezy,
-    'farnaz': GoogleFonts.farnaz,
-    'ferdosi': GoogleFonts.ferdosi,
-    'gandom': GoogleFonts.gandom,
-    'hamid': GoogleFonts.hamid,
-    'helal': GoogleFonts.helal,
-    'homa': GoogleFonts.homa,
-    'jalal': GoogleFonts.jalal,
-    'kamva': GoogleFonts.kamva,
-    'kourosh': GoogleFonts.kourosh,
-    'lotus': GoogleFonts.lotus,
-    'mahsa': GoogleFonts.mahsa,
-    'mitra': GoogleFonts.mitra,
-    'morvarid': GoogleFonts.morvarid,
-    'narm': GoogleFonts.narm,
-    'nazanin': GoogleFonts.nazanin,
-    'parastoo': GoogleFonts.parastoo,
-    'roosta': GoogleFonts.roosta,
-    'roya': GoogleFonts.roya,
-    'sahel': GoogleFonts.sahel,
-    'samim': GoogleFonts.samim,
-    'shabnam': GoogleFonts.shabnam,
-    'shiraz': GoogleFonts.shiraz,
-    'tabassom': GoogleFonts.tabassom,
-    'tanha': GoogleFonts.tanha,
-    'tehran': GoogleFonts.tehran,
-    'titrzebr': GoogleFonts.titrzebr,
-    'traffic': GoogleFonts.traffic,
-    'vazir': GoogleFonts.vazir,
-    'yagut': GoogleFonts.yagut,
-    'yas': GoogleFonts.yas,
-    'yekan': GoogleFonts.yekan,
-    'zar': GoogleFonts.zar,
-    'ziba': GoogleFonts.ziba,
-    'mikhak': GoogleFonts.mikhak,
-    'nika': GoogleFonts.nika,
-    'lalezar': GoogleFonts.lalezar,
-    'iraniansans': GoogleFonts.iraniansans,
-    'vazircode': GoogleFonts.vazircode,
-  };
+        'badr': Fontgraphy.badr,
+        'baran': Fontgraphy.baran,
+        'bardiya': Fontgraphy.bardiya,
+        'compset': Fontgraphy.compset,
+        'davat': Fontgraphy.davat,
+        'elham': Fontgraphy.elham,
+        'fantezy': Fontgraphy.fantezy,
+        'farnaz': Fontgraphy.farnaz,
+        'ferdosi': Fontgraphy.ferdosi,
+        'gandom': Fontgraphy.gandom,
+        'hamid': Fontgraphy.hamid,
+        'helal': Fontgraphy.helal,
+        'homa': Fontgraphy.homa,
+        'jalal': Fontgraphy.jalal,
+        'kamva': Fontgraphy.kamva,
+        'kourosh': Fontgraphy.kourosh,
+        'lotus': Fontgraphy.lotus,
+        'mahsa': Fontgraphy.mahsa,
+        'mitra': Fontgraphy.mitra,
+        'morvarid': Fontgraphy.morvarid,
+        'narm': Fontgraphy.narm,
+        'nazanin': Fontgraphy.nazanin,
+        'parastoo': Fontgraphy.parastoo,
+        'roosta': Fontgraphy.roosta,
+        'roya': Fontgraphy.roya,
+        'sahel': Fontgraphy.sahel,
+        'samim': Fontgraphy.samim,
+        'shabnam': Fontgraphy.shabnam,
+        'shiraz': Fontgraphy.shiraz,
+        'tabassom': Fontgraphy.tabassom,
+        'tanha': Fontgraphy.tanha,
+        'tehran': Fontgraphy.tehran,
+        'titrzebr': Fontgraphy.titrzebr,
+        'traffic': Fontgraphy.traffic,
+        'vazir': Fontgraphy.vazir,
+        'yagut': Fontgraphy.yagut,
+        'yas': Fontgraphy.yas,
+        'yekan': Fontgraphy.yekan,
+        'zar': Fontgraphy.zar,
+        'ziba': Fontgraphy.ziba,
+        'mikhak': Fontgraphy.mikhak,
+        'nika': Fontgraphy.nika,
+        'lalezar': Fontgraphy.lalezar,
+        'iraniansans': Fontgraphy.iraniansans,
+        'vazircode': Fontgraphy.vazircode,
+      };
 
   /// Get a map of all available fonts and their associated text themes.
   ///
   /// Returns a map where the key is the name of the font family and the value
-  /// is the corresponding [GoogleFonts] `TextTheme` method.
-  static Map<String, TextTheme Function([TextTheme])> _asMapOfTextThemes() => const {
-    'badr': GoogleFonts.badrTextTheme,
-    'baran': GoogleFonts.baranTextTheme,
-    'bardiya': GoogleFonts.bardiyaTextTheme,
-    'compset': GoogleFonts.compsetTextTheme,
-    'davat': GoogleFonts.davatTextTheme,
-    'elham': GoogleFonts.elhamTextTheme,
-    'fantezy': GoogleFonts.fantezyTextTheme,
-    'farnaz': GoogleFonts.farnazTextTheme,
-    'ferdosi': GoogleFonts.ferdosiTextTheme,
-    'gandom': GoogleFonts.gandomTextTheme,
-    'hamid': GoogleFonts.hamidTextTheme,
-    'helal': GoogleFonts.helalTextTheme,
-    'homa': GoogleFonts.homaTextTheme,
-    'jalal': GoogleFonts.jalalTextTheme,
-    'kamva': GoogleFonts.kamvaTextTheme,
-    'kourosh': GoogleFonts.kouroshTextTheme,
-    'lotus': GoogleFonts.lotusTextTheme,
-    'mahsa': GoogleFonts.mahsaTextTheme,
-    'mitra': GoogleFonts.mitraTextTheme,
-    'morvarid': GoogleFonts.morvaridTextTheme,
-    'narm': GoogleFonts.narmTextTheme,
-    'nazanin': GoogleFonts.nazaninTextTheme,
-    'parastoo': GoogleFonts.parastooTextTheme,
-    'roosta': GoogleFonts.roostaTextTheme,
-    'roya': GoogleFonts.royaTextTheme,
-    'sahel': GoogleFonts.sahelTextTheme,
-    'samim': GoogleFonts.samimTextTheme,
-    'shabnam': GoogleFonts.shabnamTextTheme,
-    'shiraz': GoogleFonts.shirazTextTheme,
-    'tabassom': GoogleFonts.tabassomTextTheme,
-    'tanha': GoogleFonts.tanhaTextTheme,
-    'tehran': GoogleFonts.tehranTextTheme,
-    'titrzebr': GoogleFonts.titrzebrTextTheme,
-    'traffic': GoogleFonts.trafficTextTheme,
-    'vazir': GoogleFonts.vazirTextTheme,
-    'yagut': GoogleFonts.yagutTextTheme,
-    'yas': GoogleFonts.yasTextTheme,
-    'yekan': GoogleFonts.yekanTextTheme,
-    'zar': GoogleFonts.zarTextTheme,
-    'ziba': GoogleFonts.zibaTextTheme,
-    'mikhak': GoogleFonts.mikhakTextTheme,
-    'nika': GoogleFonts.nikaTextTheme,
-    'lalezar': GoogleFonts.lalezarTextTheme,
-    'iraniansans': GoogleFonts.iraniansansTextTheme,
-    'vazircode': GoogleFonts.vazircodeTextTheme,
-  };
+  /// is the corresponding [Fontgraphy] `TextTheme` method.
+  static Map<String, TextTheme Function([TextTheme])> _asMapOfTextThemes() =>
+      const {
+        'badr': Fontgraphy.badrTextTheme,
+        'baran': Fontgraphy.baranTextTheme,
+        'bardiya': Fontgraphy.bardiyaTextTheme,
+        'compset': Fontgraphy.compsetTextTheme,
+        'davat': Fontgraphy.davatTextTheme,
+        'elham': Fontgraphy.elhamTextTheme,
+        'fantezy': Fontgraphy.fantezyTextTheme,
+        'farnaz': Fontgraphy.farnazTextTheme,
+        'ferdosi': Fontgraphy.ferdosiTextTheme,
+        'gandom': Fontgraphy.gandomTextTheme,
+        'hamid': Fontgraphy.hamidTextTheme,
+        'helal': Fontgraphy.helalTextTheme,
+        'homa': Fontgraphy.homaTextTheme,
+        'jalal': Fontgraphy.jalalTextTheme,
+        'kamva': Fontgraphy.kamvaTextTheme,
+        'kourosh': Fontgraphy.kouroshTextTheme,
+        'lotus': Fontgraphy.lotusTextTheme,
+        'mahsa': Fontgraphy.mahsaTextTheme,
+        'mitra': Fontgraphy.mitraTextTheme,
+        'morvarid': Fontgraphy.morvaridTextTheme,
+        'narm': Fontgraphy.narmTextTheme,
+        'nazanin': Fontgraphy.nazaninTextTheme,
+        'parastoo': Fontgraphy.parastooTextTheme,
+        'roosta': Fontgraphy.roostaTextTheme,
+        'roya': Fontgraphy.royaTextTheme,
+        'sahel': Fontgraphy.sahelTextTheme,
+        'samim': Fontgraphy.samimTextTheme,
+        'shabnam': Fontgraphy.shabnamTextTheme,
+        'shiraz': Fontgraphy.shirazTextTheme,
+        'tabassom': Fontgraphy.tabassomTextTheme,
+        'tanha': Fontgraphy.tanhaTextTheme,
+        'tehran': Fontgraphy.tehranTextTheme,
+        'titrzebr': Fontgraphy.titrzebrTextTheme,
+        'traffic': Fontgraphy.trafficTextTheme,
+        'vazir': Fontgraphy.vazirTextTheme,
+        'yagut': Fontgraphy.yagutTextTheme,
+        'yas': Fontgraphy.yasTextTheme,
+        'yekan': Fontgraphy.yekanTextTheme,
+        'zar': Fontgraphy.zarTextTheme,
+        'ziba': Fontgraphy.zibaTextTheme,
+        'mikhak': Fontgraphy.mikhakTextTheme,
+        'nika': Fontgraphy.nikaTextTheme,
+        'lalezar': Fontgraphy.lalezarTextTheme,
+        'iraniansans': Fontgraphy.iraniansansTextTheme,
+        'vazircode': Fontgraphy.vazircodeTextTheme,
+      };
 
   /// Retrieve a font by family name.
-  /// 
+  ///
   /// Applies the given font family from Google Fonts to the given [textStyle]
   /// and returns the resulting [TextStyle].
   ///
   /// Note: [fontFamily] is case-sensitive.
-  /// 
+  ///
   /// Parameter [fontFamily] must not be `null`. Throws if no font by name
   /// [fontFamily] exists.
-  static TextStyle getFont(String fontFamily, {
+  static TextStyle getFont(
+    String fontFamily, {
     TextStyle textStyle,
     Color color,
     Color backgroundColor,
@@ -185,7 +191,7 @@ class GoogleFonts {
     double decorationThickness,
   }) {
     assert(fontFamily != null);
-    final fonts = GoogleFonts.asMap();
+    final fonts = Fontgraphy.asMap();
     if (!fonts.containsKey(fontFamily)) {
       throw Exception("No font family by name '$fontFamily' was found.");
     }
@@ -234,7 +240,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/badr
+  ///  * https://fontgraphy.ir/
   static TextStyle badr({
     TextStyle textStyle,
     Color color,
@@ -256,11 +262,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('badr', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'badr',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'badr',
       color: color,
@@ -289,23 +301,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/badr
+  ///  * https://fontgraphy.ir/
   static TextTheme badrTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.badr(textStyle: textTheme?.display4),
-      display3: GoogleFonts.badr(textStyle: textTheme?.display3),
-      display2: GoogleFonts.badr(textStyle: textTheme?.display2),
-      display1: GoogleFonts.badr(textStyle: textTheme?.display1),
-      headline: GoogleFonts.badr(textStyle: textTheme?.headline),
-      title: GoogleFonts.badr(textStyle: textTheme?.title),
-      subhead: GoogleFonts.badr(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.badr(textStyle: textTheme?.body2),
-      body1: GoogleFonts.badr(textStyle: textTheme?.body1),
-      caption: GoogleFonts.badr(textStyle: textTheme?.caption),
-      button: GoogleFonts.badr(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.badr(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.badr(textStyle: textTheme?.overline),
+      display4: Fontgraphy.badr(textStyle: textTheme?.display4),
+      display3: Fontgraphy.badr(textStyle: textTheme?.display3),
+      display2: Fontgraphy.badr(textStyle: textTheme?.display2),
+      display1: Fontgraphy.badr(textStyle: textTheme?.display1),
+      headline: Fontgraphy.badr(textStyle: textTheme?.headline),
+      title: Fontgraphy.badr(textStyle: textTheme?.title),
+      subhead: Fontgraphy.badr(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.badr(textStyle: textTheme?.body2),
+      body1: Fontgraphy.badr(textStyle: textTheme?.body1),
+      caption: Fontgraphy.badr(textStyle: textTheme?.caption),
+      button: Fontgraphy.badr(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.badr(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.badr(textStyle: textTheme?.overline),
     );
   }
 
@@ -313,7 +325,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/baran
+  ///  * https://fontgraphy.ir/
   static TextStyle baran({
     TextStyle textStyle,
     Color color,
@@ -335,11 +347,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('baran', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'baran',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'baran',
       color: color,
@@ -368,23 +386,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/baran
+  ///  * https://fontgraphy.ir/
   static TextTheme baranTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.baran(textStyle: textTheme?.display4),
-      display3: GoogleFonts.baran(textStyle: textTheme?.display3),
-      display2: GoogleFonts.baran(textStyle: textTheme?.display2),
-      display1: GoogleFonts.baran(textStyle: textTheme?.display1),
-      headline: GoogleFonts.baran(textStyle: textTheme?.headline),
-      title: GoogleFonts.baran(textStyle: textTheme?.title),
-      subhead: GoogleFonts.baran(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.baran(textStyle: textTheme?.body2),
-      body1: GoogleFonts.baran(textStyle: textTheme?.body1),
-      caption: GoogleFonts.baran(textStyle: textTheme?.caption),
-      button: GoogleFonts.baran(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.baran(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.baran(textStyle: textTheme?.overline),
+      display4: Fontgraphy.baran(textStyle: textTheme?.display4),
+      display3: Fontgraphy.baran(textStyle: textTheme?.display3),
+      display2: Fontgraphy.baran(textStyle: textTheme?.display2),
+      display1: Fontgraphy.baran(textStyle: textTheme?.display1),
+      headline: Fontgraphy.baran(textStyle: textTheme?.headline),
+      title: Fontgraphy.baran(textStyle: textTheme?.title),
+      subhead: Fontgraphy.baran(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.baran(textStyle: textTheme?.body2),
+      body1: Fontgraphy.baran(textStyle: textTheme?.body1),
+      caption: Fontgraphy.baran(textStyle: textTheme?.caption),
+      button: Fontgraphy.baran(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.baran(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.baran(textStyle: textTheme?.overline),
     );
   }
 
@@ -392,7 +410,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/bardiya
+  ///  * https://fontgraphy.ir/
   static TextStyle bardiya({
     TextStyle textStyle,
     Color color,
@@ -414,11 +432,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('bardiya', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'bardiya',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'bardiya',
       color: color,
@@ -447,23 +471,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/bardiya
+  ///  * https://fontgraphy.ir/
   static TextTheme bardiyaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.bardiya(textStyle: textTheme?.display4),
-      display3: GoogleFonts.bardiya(textStyle: textTheme?.display3),
-      display2: GoogleFonts.bardiya(textStyle: textTheme?.display2),
-      display1: GoogleFonts.bardiya(textStyle: textTheme?.display1),
-      headline: GoogleFonts.bardiya(textStyle: textTheme?.headline),
-      title: GoogleFonts.bardiya(textStyle: textTheme?.title),
-      subhead: GoogleFonts.bardiya(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.bardiya(textStyle: textTheme?.body2),
-      body1: GoogleFonts.bardiya(textStyle: textTheme?.body1),
-      caption: GoogleFonts.bardiya(textStyle: textTheme?.caption),
-      button: GoogleFonts.bardiya(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.bardiya(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.bardiya(textStyle: textTheme?.overline),
+      display4: Fontgraphy.bardiya(textStyle: textTheme?.display4),
+      display3: Fontgraphy.bardiya(textStyle: textTheme?.display3),
+      display2: Fontgraphy.bardiya(textStyle: textTheme?.display2),
+      display1: Fontgraphy.bardiya(textStyle: textTheme?.display1),
+      headline: Fontgraphy.bardiya(textStyle: textTheme?.headline),
+      title: Fontgraphy.bardiya(textStyle: textTheme?.title),
+      subhead: Fontgraphy.bardiya(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.bardiya(textStyle: textTheme?.body2),
+      body1: Fontgraphy.bardiya(textStyle: textTheme?.body1),
+      caption: Fontgraphy.bardiya(textStyle: textTheme?.caption),
+      button: Fontgraphy.bardiya(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.bardiya(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.bardiya(textStyle: textTheme?.overline),
     );
   }
 
@@ -471,7 +495,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/compset
+  ///  * https://fontgraphy.ir/
   static TextStyle compset({
     TextStyle textStyle,
     Color color,
@@ -493,11 +517,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('compset', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'compset',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'compset',
       color: color,
@@ -526,23 +556,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/compset
+  ///  * https://fontgraphy.ir/
   static TextTheme compsetTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.compset(textStyle: textTheme?.display4),
-      display3: GoogleFonts.compset(textStyle: textTheme?.display3),
-      display2: GoogleFonts.compset(textStyle: textTheme?.display2),
-      display1: GoogleFonts.compset(textStyle: textTheme?.display1),
-      headline: GoogleFonts.compset(textStyle: textTheme?.headline),
-      title: GoogleFonts.compset(textStyle: textTheme?.title),
-      subhead: GoogleFonts.compset(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.compset(textStyle: textTheme?.body2),
-      body1: GoogleFonts.compset(textStyle: textTheme?.body1),
-      caption: GoogleFonts.compset(textStyle: textTheme?.caption),
-      button: GoogleFonts.compset(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.compset(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.compset(textStyle: textTheme?.overline),
+      display4: Fontgraphy.compset(textStyle: textTheme?.display4),
+      display3: Fontgraphy.compset(textStyle: textTheme?.display3),
+      display2: Fontgraphy.compset(textStyle: textTheme?.display2),
+      display1: Fontgraphy.compset(textStyle: textTheme?.display1),
+      headline: Fontgraphy.compset(textStyle: textTheme?.headline),
+      title: Fontgraphy.compset(textStyle: textTheme?.title),
+      subhead: Fontgraphy.compset(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.compset(textStyle: textTheme?.body2),
+      body1: Fontgraphy.compset(textStyle: textTheme?.body1),
+      caption: Fontgraphy.compset(textStyle: textTheme?.caption),
+      button: Fontgraphy.compset(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.compset(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.compset(textStyle: textTheme?.overline),
     );
   }
 
@@ -550,7 +580,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/davat
+  ///  * https://fontgraphy.ir/
   static TextStyle davat({
     TextStyle textStyle,
     Color color,
@@ -572,11 +602,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('davat', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'davat',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'davat',
       color: color,
@@ -605,23 +641,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/davat
+  ///  * https://fontgraphy.ir/
   static TextTheme davatTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.davat(textStyle: textTheme?.display4),
-      display3: GoogleFonts.davat(textStyle: textTheme?.display3),
-      display2: GoogleFonts.davat(textStyle: textTheme?.display2),
-      display1: GoogleFonts.davat(textStyle: textTheme?.display1),
-      headline: GoogleFonts.davat(textStyle: textTheme?.headline),
-      title: GoogleFonts.davat(textStyle: textTheme?.title),
-      subhead: GoogleFonts.davat(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.davat(textStyle: textTheme?.body2),
-      body1: GoogleFonts.davat(textStyle: textTheme?.body1),
-      caption: GoogleFonts.davat(textStyle: textTheme?.caption),
-      button: GoogleFonts.davat(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.davat(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.davat(textStyle: textTheme?.overline),
+      display4: Fontgraphy.davat(textStyle: textTheme?.display4),
+      display3: Fontgraphy.davat(textStyle: textTheme?.display3),
+      display2: Fontgraphy.davat(textStyle: textTheme?.display2),
+      display1: Fontgraphy.davat(textStyle: textTheme?.display1),
+      headline: Fontgraphy.davat(textStyle: textTheme?.headline),
+      title: Fontgraphy.davat(textStyle: textTheme?.title),
+      subhead: Fontgraphy.davat(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.davat(textStyle: textTheme?.body2),
+      body1: Fontgraphy.davat(textStyle: textTheme?.body1),
+      caption: Fontgraphy.davat(textStyle: textTheme?.caption),
+      button: Fontgraphy.davat(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.davat(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.davat(textStyle: textTheme?.overline),
     );
   }
 
@@ -629,7 +665,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/elham
+  ///  * https://fontgraphy.ir/
   static TextStyle elham({
     TextStyle textStyle,
     Color color,
@@ -651,11 +687,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('elham', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'elham',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'elham',
       color: color,
@@ -684,23 +726,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/elham
+  ///  * https://fontgraphy.ir/
   static TextTheme elhamTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.elham(textStyle: textTheme?.display4),
-      display3: GoogleFonts.elham(textStyle: textTheme?.display3),
-      display2: GoogleFonts.elham(textStyle: textTheme?.display2),
-      display1: GoogleFonts.elham(textStyle: textTheme?.display1),
-      headline: GoogleFonts.elham(textStyle: textTheme?.headline),
-      title: GoogleFonts.elham(textStyle: textTheme?.title),
-      subhead: GoogleFonts.elham(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.elham(textStyle: textTheme?.body2),
-      body1: GoogleFonts.elham(textStyle: textTheme?.body1),
-      caption: GoogleFonts.elham(textStyle: textTheme?.caption),
-      button: GoogleFonts.elham(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.elham(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.elham(textStyle: textTheme?.overline),
+      display4: Fontgraphy.elham(textStyle: textTheme?.display4),
+      display3: Fontgraphy.elham(textStyle: textTheme?.display3),
+      display2: Fontgraphy.elham(textStyle: textTheme?.display2),
+      display1: Fontgraphy.elham(textStyle: textTheme?.display1),
+      headline: Fontgraphy.elham(textStyle: textTheme?.headline),
+      title: Fontgraphy.elham(textStyle: textTheme?.title),
+      subhead: Fontgraphy.elham(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.elham(textStyle: textTheme?.body2),
+      body1: Fontgraphy.elham(textStyle: textTheme?.body1),
+      caption: Fontgraphy.elham(textStyle: textTheme?.caption),
+      button: Fontgraphy.elham(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.elham(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.elham(textStyle: textTheme?.overline),
     );
   }
 
@@ -708,7 +750,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/fantezy
+  ///  * https://fontgraphy.ir/
   static TextStyle fantezy({
     TextStyle textStyle,
     Color color,
@@ -730,11 +772,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('fantezy', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'fantezy',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'fantezy',
       color: color,
@@ -763,23 +811,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/fantezy
+  ///  * https://fontgraphy.ir/
   static TextTheme fantezyTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.fantezy(textStyle: textTheme?.display4),
-      display3: GoogleFonts.fantezy(textStyle: textTheme?.display3),
-      display2: GoogleFonts.fantezy(textStyle: textTheme?.display2),
-      display1: GoogleFonts.fantezy(textStyle: textTheme?.display1),
-      headline: GoogleFonts.fantezy(textStyle: textTheme?.headline),
-      title: GoogleFonts.fantezy(textStyle: textTheme?.title),
-      subhead: GoogleFonts.fantezy(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.fantezy(textStyle: textTheme?.body2),
-      body1: GoogleFonts.fantezy(textStyle: textTheme?.body1),
-      caption: GoogleFonts.fantezy(textStyle: textTheme?.caption),
-      button: GoogleFonts.fantezy(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.fantezy(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.fantezy(textStyle: textTheme?.overline),
+      display4: Fontgraphy.fantezy(textStyle: textTheme?.display4),
+      display3: Fontgraphy.fantezy(textStyle: textTheme?.display3),
+      display2: Fontgraphy.fantezy(textStyle: textTheme?.display2),
+      display1: Fontgraphy.fantezy(textStyle: textTheme?.display1),
+      headline: Fontgraphy.fantezy(textStyle: textTheme?.headline),
+      title: Fontgraphy.fantezy(textStyle: textTheme?.title),
+      subhead: Fontgraphy.fantezy(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.fantezy(textStyle: textTheme?.body2),
+      body1: Fontgraphy.fantezy(textStyle: textTheme?.body1),
+      caption: Fontgraphy.fantezy(textStyle: textTheme?.caption),
+      button: Fontgraphy.fantezy(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.fantezy(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.fantezy(textStyle: textTheme?.overline),
     );
   }
 
@@ -787,7 +835,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/farnaz
+  ///  * https://fontgraphy.ir/
   static TextStyle farnaz({
     TextStyle textStyle,
     Color color,
@@ -809,11 +857,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('farnaz', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'farnaz',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'farnaz',
       color: color,
@@ -842,23 +896,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/farnaz
+  ///  * https://fontgraphy.ir/
   static TextTheme farnazTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.farnaz(textStyle: textTheme?.display4),
-      display3: GoogleFonts.farnaz(textStyle: textTheme?.display3),
-      display2: GoogleFonts.farnaz(textStyle: textTheme?.display2),
-      display1: GoogleFonts.farnaz(textStyle: textTheme?.display1),
-      headline: GoogleFonts.farnaz(textStyle: textTheme?.headline),
-      title: GoogleFonts.farnaz(textStyle: textTheme?.title),
-      subhead: GoogleFonts.farnaz(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.farnaz(textStyle: textTheme?.body2),
-      body1: GoogleFonts.farnaz(textStyle: textTheme?.body1),
-      caption: GoogleFonts.farnaz(textStyle: textTheme?.caption),
-      button: GoogleFonts.farnaz(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.farnaz(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.farnaz(textStyle: textTheme?.overline),
+      display4: Fontgraphy.farnaz(textStyle: textTheme?.display4),
+      display3: Fontgraphy.farnaz(textStyle: textTheme?.display3),
+      display2: Fontgraphy.farnaz(textStyle: textTheme?.display2),
+      display1: Fontgraphy.farnaz(textStyle: textTheme?.display1),
+      headline: Fontgraphy.farnaz(textStyle: textTheme?.headline),
+      title: Fontgraphy.farnaz(textStyle: textTheme?.title),
+      subhead: Fontgraphy.farnaz(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.farnaz(textStyle: textTheme?.body2),
+      body1: Fontgraphy.farnaz(textStyle: textTheme?.body1),
+      caption: Fontgraphy.farnaz(textStyle: textTheme?.caption),
+      button: Fontgraphy.farnaz(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.farnaz(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.farnaz(textStyle: textTheme?.overline),
     );
   }
 
@@ -866,7 +920,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/ferdosi
+  ///  * https://fontgraphy.ir/
   static TextStyle ferdosi({
     TextStyle textStyle,
     Color color,
@@ -888,11 +942,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('ferdosi', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'ferdosi',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'ferdosi',
       color: color,
@@ -921,23 +981,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/ferdosi
+  ///  * https://fontgraphy.ir/
   static TextTheme ferdosiTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.ferdosi(textStyle: textTheme?.display4),
-      display3: GoogleFonts.ferdosi(textStyle: textTheme?.display3),
-      display2: GoogleFonts.ferdosi(textStyle: textTheme?.display2),
-      display1: GoogleFonts.ferdosi(textStyle: textTheme?.display1),
-      headline: GoogleFonts.ferdosi(textStyle: textTheme?.headline),
-      title: GoogleFonts.ferdosi(textStyle: textTheme?.title),
-      subhead: GoogleFonts.ferdosi(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.ferdosi(textStyle: textTheme?.body2),
-      body1: GoogleFonts.ferdosi(textStyle: textTheme?.body1),
-      caption: GoogleFonts.ferdosi(textStyle: textTheme?.caption),
-      button: GoogleFonts.ferdosi(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.ferdosi(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.ferdosi(textStyle: textTheme?.overline),
+      display4: Fontgraphy.ferdosi(textStyle: textTheme?.display4),
+      display3: Fontgraphy.ferdosi(textStyle: textTheme?.display3),
+      display2: Fontgraphy.ferdosi(textStyle: textTheme?.display2),
+      display1: Fontgraphy.ferdosi(textStyle: textTheme?.display1),
+      headline: Fontgraphy.ferdosi(textStyle: textTheme?.headline),
+      title: Fontgraphy.ferdosi(textStyle: textTheme?.title),
+      subhead: Fontgraphy.ferdosi(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.ferdosi(textStyle: textTheme?.body2),
+      body1: Fontgraphy.ferdosi(textStyle: textTheme?.body1),
+      caption: Fontgraphy.ferdosi(textStyle: textTheme?.caption),
+      button: Fontgraphy.ferdosi(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.ferdosi(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.ferdosi(textStyle: textTheme?.overline),
     );
   }
 
@@ -945,7 +1005,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/gandom
+  ///  * https://fontgraphy.ir/
   static TextStyle gandom({
     TextStyle textStyle,
     Color color,
@@ -967,11 +1027,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('gandom', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'gandom',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'gandom',
       color: color,
@@ -1000,23 +1066,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/gandom
+  ///  * https://fontgraphy.ir/
   static TextTheme gandomTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.gandom(textStyle: textTheme?.display4),
-      display3: GoogleFonts.gandom(textStyle: textTheme?.display3),
-      display2: GoogleFonts.gandom(textStyle: textTheme?.display2),
-      display1: GoogleFonts.gandom(textStyle: textTheme?.display1),
-      headline: GoogleFonts.gandom(textStyle: textTheme?.headline),
-      title: GoogleFonts.gandom(textStyle: textTheme?.title),
-      subhead: GoogleFonts.gandom(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.gandom(textStyle: textTheme?.body2),
-      body1: GoogleFonts.gandom(textStyle: textTheme?.body1),
-      caption: GoogleFonts.gandom(textStyle: textTheme?.caption),
-      button: GoogleFonts.gandom(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.gandom(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.gandom(textStyle: textTheme?.overline),
+      display4: Fontgraphy.gandom(textStyle: textTheme?.display4),
+      display3: Fontgraphy.gandom(textStyle: textTheme?.display3),
+      display2: Fontgraphy.gandom(textStyle: textTheme?.display2),
+      display1: Fontgraphy.gandom(textStyle: textTheme?.display1),
+      headline: Fontgraphy.gandom(textStyle: textTheme?.headline),
+      title: Fontgraphy.gandom(textStyle: textTheme?.title),
+      subhead: Fontgraphy.gandom(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.gandom(textStyle: textTheme?.body2),
+      body1: Fontgraphy.gandom(textStyle: textTheme?.body1),
+      caption: Fontgraphy.gandom(textStyle: textTheme?.caption),
+      button: Fontgraphy.gandom(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.gandom(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.gandom(textStyle: textTheme?.overline),
     );
   }
 
@@ -1024,7 +1090,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/hamid
+  ///  * https://fontgraphy.ir/
   static TextStyle hamid({
     TextStyle textStyle,
     Color color,
@@ -1046,11 +1112,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('hamid', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'hamid',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'hamid',
       color: color,
@@ -1079,23 +1151,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/hamid
+  ///  * https://fontgraphy.ir/
   static TextTheme hamidTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.hamid(textStyle: textTheme?.display4),
-      display3: GoogleFonts.hamid(textStyle: textTheme?.display3),
-      display2: GoogleFonts.hamid(textStyle: textTheme?.display2),
-      display1: GoogleFonts.hamid(textStyle: textTheme?.display1),
-      headline: GoogleFonts.hamid(textStyle: textTheme?.headline),
-      title: GoogleFonts.hamid(textStyle: textTheme?.title),
-      subhead: GoogleFonts.hamid(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.hamid(textStyle: textTheme?.body2),
-      body1: GoogleFonts.hamid(textStyle: textTheme?.body1),
-      caption: GoogleFonts.hamid(textStyle: textTheme?.caption),
-      button: GoogleFonts.hamid(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.hamid(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.hamid(textStyle: textTheme?.overline),
+      display4: Fontgraphy.hamid(textStyle: textTheme?.display4),
+      display3: Fontgraphy.hamid(textStyle: textTheme?.display3),
+      display2: Fontgraphy.hamid(textStyle: textTheme?.display2),
+      display1: Fontgraphy.hamid(textStyle: textTheme?.display1),
+      headline: Fontgraphy.hamid(textStyle: textTheme?.headline),
+      title: Fontgraphy.hamid(textStyle: textTheme?.title),
+      subhead: Fontgraphy.hamid(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.hamid(textStyle: textTheme?.body2),
+      body1: Fontgraphy.hamid(textStyle: textTheme?.body1),
+      caption: Fontgraphy.hamid(textStyle: textTheme?.caption),
+      button: Fontgraphy.hamid(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.hamid(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.hamid(textStyle: textTheme?.overline),
     );
   }
 
@@ -1103,7 +1175,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/helal
+  ///  * https://fontgraphy.ir/
   static TextStyle helal({
     TextStyle textStyle,
     Color color,
@@ -1125,11 +1197,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('helal', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'helal',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'helal',
       color: color,
@@ -1158,23 +1236,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/helal
+  ///  * https://fontgraphy.ir/
   static TextTheme helalTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.helal(textStyle: textTheme?.display4),
-      display3: GoogleFonts.helal(textStyle: textTheme?.display3),
-      display2: GoogleFonts.helal(textStyle: textTheme?.display2),
-      display1: GoogleFonts.helal(textStyle: textTheme?.display1),
-      headline: GoogleFonts.helal(textStyle: textTheme?.headline),
-      title: GoogleFonts.helal(textStyle: textTheme?.title),
-      subhead: GoogleFonts.helal(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.helal(textStyle: textTheme?.body2),
-      body1: GoogleFonts.helal(textStyle: textTheme?.body1),
-      caption: GoogleFonts.helal(textStyle: textTheme?.caption),
-      button: GoogleFonts.helal(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.helal(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.helal(textStyle: textTheme?.overline),
+      display4: Fontgraphy.helal(textStyle: textTheme?.display4),
+      display3: Fontgraphy.helal(textStyle: textTheme?.display3),
+      display2: Fontgraphy.helal(textStyle: textTheme?.display2),
+      display1: Fontgraphy.helal(textStyle: textTheme?.display1),
+      headline: Fontgraphy.helal(textStyle: textTheme?.headline),
+      title: Fontgraphy.helal(textStyle: textTheme?.title),
+      subhead: Fontgraphy.helal(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.helal(textStyle: textTheme?.body2),
+      body1: Fontgraphy.helal(textStyle: textTheme?.body1),
+      caption: Fontgraphy.helal(textStyle: textTheme?.caption),
+      button: Fontgraphy.helal(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.helal(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.helal(textStyle: textTheme?.overline),
     );
   }
 
@@ -1182,7 +1260,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/homa
+  ///  * https://fontgraphy.ir/
   static TextStyle homa({
     TextStyle textStyle,
     Color color,
@@ -1204,11 +1282,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('homa', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'homa',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'homa',
       color: color,
@@ -1237,23 +1321,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/homa
+  ///  * https://fontgraphy.ir/
   static TextTheme homaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.homa(textStyle: textTheme?.display4),
-      display3: GoogleFonts.homa(textStyle: textTheme?.display3),
-      display2: GoogleFonts.homa(textStyle: textTheme?.display2),
-      display1: GoogleFonts.homa(textStyle: textTheme?.display1),
-      headline: GoogleFonts.homa(textStyle: textTheme?.headline),
-      title: GoogleFonts.homa(textStyle: textTheme?.title),
-      subhead: GoogleFonts.homa(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.homa(textStyle: textTheme?.body2),
-      body1: GoogleFonts.homa(textStyle: textTheme?.body1),
-      caption: GoogleFonts.homa(textStyle: textTheme?.caption),
-      button: GoogleFonts.homa(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.homa(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.homa(textStyle: textTheme?.overline),
+      display4: Fontgraphy.homa(textStyle: textTheme?.display4),
+      display3: Fontgraphy.homa(textStyle: textTheme?.display3),
+      display2: Fontgraphy.homa(textStyle: textTheme?.display2),
+      display1: Fontgraphy.homa(textStyle: textTheme?.display1),
+      headline: Fontgraphy.homa(textStyle: textTheme?.headline),
+      title: Fontgraphy.homa(textStyle: textTheme?.title),
+      subhead: Fontgraphy.homa(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.homa(textStyle: textTheme?.body2),
+      body1: Fontgraphy.homa(textStyle: textTheme?.body1),
+      caption: Fontgraphy.homa(textStyle: textTheme?.caption),
+      button: Fontgraphy.homa(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.homa(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.homa(textStyle: textTheme?.overline),
     );
   }
 
@@ -1261,7 +1345,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/jalal
+  ///  * https://fontgraphy.ir/
   static TextStyle jalal({
     TextStyle textStyle,
     Color color,
@@ -1283,11 +1367,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('jalal', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'jalal',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'jalal',
       color: color,
@@ -1316,23 +1406,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/jalal
+  ///  * https://fontgraphy.ir/
   static TextTheme jalalTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.jalal(textStyle: textTheme?.display4),
-      display3: GoogleFonts.jalal(textStyle: textTheme?.display3),
-      display2: GoogleFonts.jalal(textStyle: textTheme?.display2),
-      display1: GoogleFonts.jalal(textStyle: textTheme?.display1),
-      headline: GoogleFonts.jalal(textStyle: textTheme?.headline),
-      title: GoogleFonts.jalal(textStyle: textTheme?.title),
-      subhead: GoogleFonts.jalal(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.jalal(textStyle: textTheme?.body2),
-      body1: GoogleFonts.jalal(textStyle: textTheme?.body1),
-      caption: GoogleFonts.jalal(textStyle: textTheme?.caption),
-      button: GoogleFonts.jalal(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.jalal(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.jalal(textStyle: textTheme?.overline),
+      display4: Fontgraphy.jalal(textStyle: textTheme?.display4),
+      display3: Fontgraphy.jalal(textStyle: textTheme?.display3),
+      display2: Fontgraphy.jalal(textStyle: textTheme?.display2),
+      display1: Fontgraphy.jalal(textStyle: textTheme?.display1),
+      headline: Fontgraphy.jalal(textStyle: textTheme?.headline),
+      title: Fontgraphy.jalal(textStyle: textTheme?.title),
+      subhead: Fontgraphy.jalal(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.jalal(textStyle: textTheme?.body2),
+      body1: Fontgraphy.jalal(textStyle: textTheme?.body1),
+      caption: Fontgraphy.jalal(textStyle: textTheme?.caption),
+      button: Fontgraphy.jalal(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.jalal(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.jalal(textStyle: textTheme?.overline),
     );
   }
 
@@ -1340,7 +1430,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/kamva
+  ///  * https://fontgraphy.ir/
   static TextStyle kamva({
     TextStyle textStyle,
     Color color,
@@ -1362,11 +1452,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('kamva', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'kamva',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'kamva',
       color: color,
@@ -1395,23 +1491,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/kamva
+  ///  * https://fontgraphy.ir/
   static TextTheme kamvaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.kamva(textStyle: textTheme?.display4),
-      display3: GoogleFonts.kamva(textStyle: textTheme?.display3),
-      display2: GoogleFonts.kamva(textStyle: textTheme?.display2),
-      display1: GoogleFonts.kamva(textStyle: textTheme?.display1),
-      headline: GoogleFonts.kamva(textStyle: textTheme?.headline),
-      title: GoogleFonts.kamva(textStyle: textTheme?.title),
-      subhead: GoogleFonts.kamva(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.kamva(textStyle: textTheme?.body2),
-      body1: GoogleFonts.kamva(textStyle: textTheme?.body1),
-      caption: GoogleFonts.kamva(textStyle: textTheme?.caption),
-      button: GoogleFonts.kamva(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.kamva(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.kamva(textStyle: textTheme?.overline),
+      display4: Fontgraphy.kamva(textStyle: textTheme?.display4),
+      display3: Fontgraphy.kamva(textStyle: textTheme?.display3),
+      display2: Fontgraphy.kamva(textStyle: textTheme?.display2),
+      display1: Fontgraphy.kamva(textStyle: textTheme?.display1),
+      headline: Fontgraphy.kamva(textStyle: textTheme?.headline),
+      title: Fontgraphy.kamva(textStyle: textTheme?.title),
+      subhead: Fontgraphy.kamva(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.kamva(textStyle: textTheme?.body2),
+      body1: Fontgraphy.kamva(textStyle: textTheme?.body1),
+      caption: Fontgraphy.kamva(textStyle: textTheme?.caption),
+      button: Fontgraphy.kamva(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.kamva(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.kamva(textStyle: textTheme?.overline),
     );
   }
 
@@ -1419,7 +1515,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/kourosh
+  ///  * https://fontgraphy.ir/
   static TextStyle kourosh({
     TextStyle textStyle,
     Color color,
@@ -1441,11 +1537,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('kourosh', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'kourosh',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'kourosh',
       color: color,
@@ -1474,23 +1576,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/kourosh
+  ///  * https://fontgraphy.ir/
   static TextTheme kouroshTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.kourosh(textStyle: textTheme?.display4),
-      display3: GoogleFonts.kourosh(textStyle: textTheme?.display3),
-      display2: GoogleFonts.kourosh(textStyle: textTheme?.display2),
-      display1: GoogleFonts.kourosh(textStyle: textTheme?.display1),
-      headline: GoogleFonts.kourosh(textStyle: textTheme?.headline),
-      title: GoogleFonts.kourosh(textStyle: textTheme?.title),
-      subhead: GoogleFonts.kourosh(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.kourosh(textStyle: textTheme?.body2),
-      body1: GoogleFonts.kourosh(textStyle: textTheme?.body1),
-      caption: GoogleFonts.kourosh(textStyle: textTheme?.caption),
-      button: GoogleFonts.kourosh(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.kourosh(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.kourosh(textStyle: textTheme?.overline),
+      display4: Fontgraphy.kourosh(textStyle: textTheme?.display4),
+      display3: Fontgraphy.kourosh(textStyle: textTheme?.display3),
+      display2: Fontgraphy.kourosh(textStyle: textTheme?.display2),
+      display1: Fontgraphy.kourosh(textStyle: textTheme?.display1),
+      headline: Fontgraphy.kourosh(textStyle: textTheme?.headline),
+      title: Fontgraphy.kourosh(textStyle: textTheme?.title),
+      subhead: Fontgraphy.kourosh(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.kourosh(textStyle: textTheme?.body2),
+      body1: Fontgraphy.kourosh(textStyle: textTheme?.body1),
+      caption: Fontgraphy.kourosh(textStyle: textTheme?.caption),
+      button: Fontgraphy.kourosh(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.kourosh(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.kourosh(textStyle: textTheme?.overline),
     );
   }
 
@@ -1498,7 +1600,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/lotus
+  ///  * https://fontgraphy.ir/
   static TextStyle lotus({
     TextStyle textStyle,
     Color color,
@@ -1520,11 +1622,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('lotus', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'lotus',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'lotus',
       color: color,
@@ -1553,23 +1661,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/lotus
+  ///  * https://fontgraphy.ir/
   static TextTheme lotusTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.lotus(textStyle: textTheme?.display4),
-      display3: GoogleFonts.lotus(textStyle: textTheme?.display3),
-      display2: GoogleFonts.lotus(textStyle: textTheme?.display2),
-      display1: GoogleFonts.lotus(textStyle: textTheme?.display1),
-      headline: GoogleFonts.lotus(textStyle: textTheme?.headline),
-      title: GoogleFonts.lotus(textStyle: textTheme?.title),
-      subhead: GoogleFonts.lotus(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.lotus(textStyle: textTheme?.body2),
-      body1: GoogleFonts.lotus(textStyle: textTheme?.body1),
-      caption: GoogleFonts.lotus(textStyle: textTheme?.caption),
-      button: GoogleFonts.lotus(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.lotus(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.lotus(textStyle: textTheme?.overline),
+      display4: Fontgraphy.lotus(textStyle: textTheme?.display4),
+      display3: Fontgraphy.lotus(textStyle: textTheme?.display3),
+      display2: Fontgraphy.lotus(textStyle: textTheme?.display2),
+      display1: Fontgraphy.lotus(textStyle: textTheme?.display1),
+      headline: Fontgraphy.lotus(textStyle: textTheme?.headline),
+      title: Fontgraphy.lotus(textStyle: textTheme?.title),
+      subhead: Fontgraphy.lotus(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.lotus(textStyle: textTheme?.body2),
+      body1: Fontgraphy.lotus(textStyle: textTheme?.body1),
+      caption: Fontgraphy.lotus(textStyle: textTheme?.caption),
+      button: Fontgraphy.lotus(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.lotus(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.lotus(textStyle: textTheme?.overline),
     );
   }
 
@@ -1577,7 +1685,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/mahsa
+  ///  * https://fontgraphy.ir/
   static TextStyle mahsa({
     TextStyle textStyle,
     Color color,
@@ -1599,11 +1707,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('mahsa', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'mahsa',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'mahsa',
       color: color,
@@ -1632,23 +1746,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/mahsa
+  ///  * https://fontgraphy.ir/
   static TextTheme mahsaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.mahsa(textStyle: textTheme?.display4),
-      display3: GoogleFonts.mahsa(textStyle: textTheme?.display3),
-      display2: GoogleFonts.mahsa(textStyle: textTheme?.display2),
-      display1: GoogleFonts.mahsa(textStyle: textTheme?.display1),
-      headline: GoogleFonts.mahsa(textStyle: textTheme?.headline),
-      title: GoogleFonts.mahsa(textStyle: textTheme?.title),
-      subhead: GoogleFonts.mahsa(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.mahsa(textStyle: textTheme?.body2),
-      body1: GoogleFonts.mahsa(textStyle: textTheme?.body1),
-      caption: GoogleFonts.mahsa(textStyle: textTheme?.caption),
-      button: GoogleFonts.mahsa(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.mahsa(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.mahsa(textStyle: textTheme?.overline),
+      display4: Fontgraphy.mahsa(textStyle: textTheme?.display4),
+      display3: Fontgraphy.mahsa(textStyle: textTheme?.display3),
+      display2: Fontgraphy.mahsa(textStyle: textTheme?.display2),
+      display1: Fontgraphy.mahsa(textStyle: textTheme?.display1),
+      headline: Fontgraphy.mahsa(textStyle: textTheme?.headline),
+      title: Fontgraphy.mahsa(textStyle: textTheme?.title),
+      subhead: Fontgraphy.mahsa(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.mahsa(textStyle: textTheme?.body2),
+      body1: Fontgraphy.mahsa(textStyle: textTheme?.body1),
+      caption: Fontgraphy.mahsa(textStyle: textTheme?.caption),
+      button: Fontgraphy.mahsa(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.mahsa(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.mahsa(textStyle: textTheme?.overline),
     );
   }
 
@@ -1656,7 +1770,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/mitra
+  ///  * https://fontgraphy.ir/
   static TextStyle mitra({
     TextStyle textStyle,
     Color color,
@@ -1678,11 +1792,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('mitra', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'mitra',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'mitra',
       color: color,
@@ -1711,23 +1831,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/mitra
+  ///  * https://fontgraphy.ir/
   static TextTheme mitraTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.mitra(textStyle: textTheme?.display4),
-      display3: GoogleFonts.mitra(textStyle: textTheme?.display3),
-      display2: GoogleFonts.mitra(textStyle: textTheme?.display2),
-      display1: GoogleFonts.mitra(textStyle: textTheme?.display1),
-      headline: GoogleFonts.mitra(textStyle: textTheme?.headline),
-      title: GoogleFonts.mitra(textStyle: textTheme?.title),
-      subhead: GoogleFonts.mitra(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.mitra(textStyle: textTheme?.body2),
-      body1: GoogleFonts.mitra(textStyle: textTheme?.body1),
-      caption: GoogleFonts.mitra(textStyle: textTheme?.caption),
-      button: GoogleFonts.mitra(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.mitra(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.mitra(textStyle: textTheme?.overline),
+      display4: Fontgraphy.mitra(textStyle: textTheme?.display4),
+      display3: Fontgraphy.mitra(textStyle: textTheme?.display3),
+      display2: Fontgraphy.mitra(textStyle: textTheme?.display2),
+      display1: Fontgraphy.mitra(textStyle: textTheme?.display1),
+      headline: Fontgraphy.mitra(textStyle: textTheme?.headline),
+      title: Fontgraphy.mitra(textStyle: textTheme?.title),
+      subhead: Fontgraphy.mitra(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.mitra(textStyle: textTheme?.body2),
+      body1: Fontgraphy.mitra(textStyle: textTheme?.body1),
+      caption: Fontgraphy.mitra(textStyle: textTheme?.caption),
+      button: Fontgraphy.mitra(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.mitra(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.mitra(textStyle: textTheme?.overline),
     );
   }
 
@@ -1735,7 +1855,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/morvarid
+  ///  * https://fontgraphy.ir/
   static TextStyle morvarid({
     TextStyle textStyle,
     Color color,
@@ -1757,11 +1877,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('morvarid', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'morvarid',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'morvarid',
       color: color,
@@ -1790,23 +1916,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/morvarid
+  ///  * https://fontgraphy.ir/
   static TextTheme morvaridTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.morvarid(textStyle: textTheme?.display4),
-      display3: GoogleFonts.morvarid(textStyle: textTheme?.display3),
-      display2: GoogleFonts.morvarid(textStyle: textTheme?.display2),
-      display1: GoogleFonts.morvarid(textStyle: textTheme?.display1),
-      headline: GoogleFonts.morvarid(textStyle: textTheme?.headline),
-      title: GoogleFonts.morvarid(textStyle: textTheme?.title),
-      subhead: GoogleFonts.morvarid(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.morvarid(textStyle: textTheme?.body2),
-      body1: GoogleFonts.morvarid(textStyle: textTheme?.body1),
-      caption: GoogleFonts.morvarid(textStyle: textTheme?.caption),
-      button: GoogleFonts.morvarid(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.morvarid(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.morvarid(textStyle: textTheme?.overline),
+      display4: Fontgraphy.morvarid(textStyle: textTheme?.display4),
+      display3: Fontgraphy.morvarid(textStyle: textTheme?.display3),
+      display2: Fontgraphy.morvarid(textStyle: textTheme?.display2),
+      display1: Fontgraphy.morvarid(textStyle: textTheme?.display1),
+      headline: Fontgraphy.morvarid(textStyle: textTheme?.headline),
+      title: Fontgraphy.morvarid(textStyle: textTheme?.title),
+      subhead: Fontgraphy.morvarid(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.morvarid(textStyle: textTheme?.body2),
+      body1: Fontgraphy.morvarid(textStyle: textTheme?.body1),
+      caption: Fontgraphy.morvarid(textStyle: textTheme?.caption),
+      button: Fontgraphy.morvarid(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.morvarid(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.morvarid(textStyle: textTheme?.overline),
     );
   }
 
@@ -1814,7 +1940,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/narm
+  ///  * https://fontgraphy.ir/
   static TextStyle narm({
     TextStyle textStyle,
     Color color,
@@ -1836,11 +1962,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('narm', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'narm',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'narm',
       color: color,
@@ -1869,23 +2001,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/narm
+  ///  * https://fontgraphy.ir/
   static TextTheme narmTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.narm(textStyle: textTheme?.display4),
-      display3: GoogleFonts.narm(textStyle: textTheme?.display3),
-      display2: GoogleFonts.narm(textStyle: textTheme?.display2),
-      display1: GoogleFonts.narm(textStyle: textTheme?.display1),
-      headline: GoogleFonts.narm(textStyle: textTheme?.headline),
-      title: GoogleFonts.narm(textStyle: textTheme?.title),
-      subhead: GoogleFonts.narm(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.narm(textStyle: textTheme?.body2),
-      body1: GoogleFonts.narm(textStyle: textTheme?.body1),
-      caption: GoogleFonts.narm(textStyle: textTheme?.caption),
-      button: GoogleFonts.narm(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.narm(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.narm(textStyle: textTheme?.overline),
+      display4: Fontgraphy.narm(textStyle: textTheme?.display4),
+      display3: Fontgraphy.narm(textStyle: textTheme?.display3),
+      display2: Fontgraphy.narm(textStyle: textTheme?.display2),
+      display1: Fontgraphy.narm(textStyle: textTheme?.display1),
+      headline: Fontgraphy.narm(textStyle: textTheme?.headline),
+      title: Fontgraphy.narm(textStyle: textTheme?.title),
+      subhead: Fontgraphy.narm(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.narm(textStyle: textTheme?.body2),
+      body1: Fontgraphy.narm(textStyle: textTheme?.body1),
+      caption: Fontgraphy.narm(textStyle: textTheme?.caption),
+      button: Fontgraphy.narm(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.narm(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.narm(textStyle: textTheme?.overline),
     );
   }
 
@@ -1893,7 +2025,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/nazanin
+  ///  * https://fontgraphy.ir/
   static TextStyle nazanin({
     TextStyle textStyle,
     Color color,
@@ -1915,11 +2047,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('nazanin', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'nazanin',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'nazanin',
       color: color,
@@ -1948,23 +2086,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/nazanin
+  ///  * https://fontgraphy.ir/
   static TextTheme nazaninTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.nazanin(textStyle: textTheme?.display4),
-      display3: GoogleFonts.nazanin(textStyle: textTheme?.display3),
-      display2: GoogleFonts.nazanin(textStyle: textTheme?.display2),
-      display1: GoogleFonts.nazanin(textStyle: textTheme?.display1),
-      headline: GoogleFonts.nazanin(textStyle: textTheme?.headline),
-      title: GoogleFonts.nazanin(textStyle: textTheme?.title),
-      subhead: GoogleFonts.nazanin(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.nazanin(textStyle: textTheme?.body2),
-      body1: GoogleFonts.nazanin(textStyle: textTheme?.body1),
-      caption: GoogleFonts.nazanin(textStyle: textTheme?.caption),
-      button: GoogleFonts.nazanin(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.nazanin(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.nazanin(textStyle: textTheme?.overline),
+      display4: Fontgraphy.nazanin(textStyle: textTheme?.display4),
+      display3: Fontgraphy.nazanin(textStyle: textTheme?.display3),
+      display2: Fontgraphy.nazanin(textStyle: textTheme?.display2),
+      display1: Fontgraphy.nazanin(textStyle: textTheme?.display1),
+      headline: Fontgraphy.nazanin(textStyle: textTheme?.headline),
+      title: Fontgraphy.nazanin(textStyle: textTheme?.title),
+      subhead: Fontgraphy.nazanin(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.nazanin(textStyle: textTheme?.body2),
+      body1: Fontgraphy.nazanin(textStyle: textTheme?.body1),
+      caption: Fontgraphy.nazanin(textStyle: textTheme?.caption),
+      button: Fontgraphy.nazanin(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.nazanin(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.nazanin(textStyle: textTheme?.overline),
     );
   }
 
@@ -1972,7 +2110,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/parastoo
+  ///  * https://fontgraphy.ir/
   static TextStyle parastoo({
     TextStyle textStyle,
     Color color,
@@ -1994,11 +2132,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('parastoo', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'parastoo',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'parastoo',
       color: color,
@@ -2027,23 +2171,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/parastoo
+  ///  * https://fontgraphy.ir/
   static TextTheme parastooTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.parastoo(textStyle: textTheme?.display4),
-      display3: GoogleFonts.parastoo(textStyle: textTheme?.display3),
-      display2: GoogleFonts.parastoo(textStyle: textTheme?.display2),
-      display1: GoogleFonts.parastoo(textStyle: textTheme?.display1),
-      headline: GoogleFonts.parastoo(textStyle: textTheme?.headline),
-      title: GoogleFonts.parastoo(textStyle: textTheme?.title),
-      subhead: GoogleFonts.parastoo(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.parastoo(textStyle: textTheme?.body2),
-      body1: GoogleFonts.parastoo(textStyle: textTheme?.body1),
-      caption: GoogleFonts.parastoo(textStyle: textTheme?.caption),
-      button: GoogleFonts.parastoo(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.parastoo(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.parastoo(textStyle: textTheme?.overline),
+      display4: Fontgraphy.parastoo(textStyle: textTheme?.display4),
+      display3: Fontgraphy.parastoo(textStyle: textTheme?.display3),
+      display2: Fontgraphy.parastoo(textStyle: textTheme?.display2),
+      display1: Fontgraphy.parastoo(textStyle: textTheme?.display1),
+      headline: Fontgraphy.parastoo(textStyle: textTheme?.headline),
+      title: Fontgraphy.parastoo(textStyle: textTheme?.title),
+      subhead: Fontgraphy.parastoo(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.parastoo(textStyle: textTheme?.body2),
+      body1: Fontgraphy.parastoo(textStyle: textTheme?.body1),
+      caption: Fontgraphy.parastoo(textStyle: textTheme?.caption),
+      button: Fontgraphy.parastoo(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.parastoo(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.parastoo(textStyle: textTheme?.overline),
     );
   }
 
@@ -2051,7 +2195,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/roosta
+  ///  * https://fontgraphy.ir/
   static TextStyle roosta({
     TextStyle textStyle,
     Color color,
@@ -2073,11 +2217,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('roosta', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'roosta',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'roosta',
       color: color,
@@ -2106,23 +2256,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/roosta
+  ///  * https://fontgraphy.ir/
   static TextTheme roostaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.roosta(textStyle: textTheme?.display4),
-      display3: GoogleFonts.roosta(textStyle: textTheme?.display3),
-      display2: GoogleFonts.roosta(textStyle: textTheme?.display2),
-      display1: GoogleFonts.roosta(textStyle: textTheme?.display1),
-      headline: GoogleFonts.roosta(textStyle: textTheme?.headline),
-      title: GoogleFonts.roosta(textStyle: textTheme?.title),
-      subhead: GoogleFonts.roosta(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.roosta(textStyle: textTheme?.body2),
-      body1: GoogleFonts.roosta(textStyle: textTheme?.body1),
-      caption: GoogleFonts.roosta(textStyle: textTheme?.caption),
-      button: GoogleFonts.roosta(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.roosta(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.roosta(textStyle: textTheme?.overline),
+      display4: Fontgraphy.roosta(textStyle: textTheme?.display4),
+      display3: Fontgraphy.roosta(textStyle: textTheme?.display3),
+      display2: Fontgraphy.roosta(textStyle: textTheme?.display2),
+      display1: Fontgraphy.roosta(textStyle: textTheme?.display1),
+      headline: Fontgraphy.roosta(textStyle: textTheme?.headline),
+      title: Fontgraphy.roosta(textStyle: textTheme?.title),
+      subhead: Fontgraphy.roosta(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.roosta(textStyle: textTheme?.body2),
+      body1: Fontgraphy.roosta(textStyle: textTheme?.body1),
+      caption: Fontgraphy.roosta(textStyle: textTheme?.caption),
+      button: Fontgraphy.roosta(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.roosta(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.roosta(textStyle: textTheme?.overline),
     );
   }
 
@@ -2130,7 +2280,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/roya
+  ///  * https://fontgraphy.ir/
   static TextStyle roya({
     TextStyle textStyle,
     Color color,
@@ -2152,11 +2302,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('roya', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'roya',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'roya',
       color: color,
@@ -2185,23 +2341,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/roya
+  ///  * https://fontgraphy.ir/
   static TextTheme royaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.roya(textStyle: textTheme?.display4),
-      display3: GoogleFonts.roya(textStyle: textTheme?.display3),
-      display2: GoogleFonts.roya(textStyle: textTheme?.display2),
-      display1: GoogleFonts.roya(textStyle: textTheme?.display1),
-      headline: GoogleFonts.roya(textStyle: textTheme?.headline),
-      title: GoogleFonts.roya(textStyle: textTheme?.title),
-      subhead: GoogleFonts.roya(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.roya(textStyle: textTheme?.body2),
-      body1: GoogleFonts.roya(textStyle: textTheme?.body1),
-      caption: GoogleFonts.roya(textStyle: textTheme?.caption),
-      button: GoogleFonts.roya(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.roya(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.roya(textStyle: textTheme?.overline),
+      display4: Fontgraphy.roya(textStyle: textTheme?.display4),
+      display3: Fontgraphy.roya(textStyle: textTheme?.display3),
+      display2: Fontgraphy.roya(textStyle: textTheme?.display2),
+      display1: Fontgraphy.roya(textStyle: textTheme?.display1),
+      headline: Fontgraphy.roya(textStyle: textTheme?.headline),
+      title: Fontgraphy.roya(textStyle: textTheme?.title),
+      subhead: Fontgraphy.roya(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.roya(textStyle: textTheme?.body2),
+      body1: Fontgraphy.roya(textStyle: textTheme?.body1),
+      caption: Fontgraphy.roya(textStyle: textTheme?.caption),
+      button: Fontgraphy.roya(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.roya(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.roya(textStyle: textTheme?.overline),
     );
   }
 
@@ -2209,7 +2365,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/sahel
+  ///  * https://fontgraphy.ir/
   static TextStyle sahel({
     TextStyle textStyle,
     Color color,
@@ -2231,11 +2387,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('sahel', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'sahel',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'sahel',
       color: color,
@@ -2264,23 +2426,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/sahel
+  ///  * https://fontgraphy.ir/
   static TextTheme sahelTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.sahel(textStyle: textTheme?.display4),
-      display3: GoogleFonts.sahel(textStyle: textTheme?.display3),
-      display2: GoogleFonts.sahel(textStyle: textTheme?.display2),
-      display1: GoogleFonts.sahel(textStyle: textTheme?.display1),
-      headline: GoogleFonts.sahel(textStyle: textTheme?.headline),
-      title: GoogleFonts.sahel(textStyle: textTheme?.title),
-      subhead: GoogleFonts.sahel(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.sahel(textStyle: textTheme?.body2),
-      body1: GoogleFonts.sahel(textStyle: textTheme?.body1),
-      caption: GoogleFonts.sahel(textStyle: textTheme?.caption),
-      button: GoogleFonts.sahel(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.sahel(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.sahel(textStyle: textTheme?.overline),
+      display4: Fontgraphy.sahel(textStyle: textTheme?.display4),
+      display3: Fontgraphy.sahel(textStyle: textTheme?.display3),
+      display2: Fontgraphy.sahel(textStyle: textTheme?.display2),
+      display1: Fontgraphy.sahel(textStyle: textTheme?.display1),
+      headline: Fontgraphy.sahel(textStyle: textTheme?.headline),
+      title: Fontgraphy.sahel(textStyle: textTheme?.title),
+      subhead: Fontgraphy.sahel(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.sahel(textStyle: textTheme?.body2),
+      body1: Fontgraphy.sahel(textStyle: textTheme?.body1),
+      caption: Fontgraphy.sahel(textStyle: textTheme?.caption),
+      button: Fontgraphy.sahel(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.sahel(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.sahel(textStyle: textTheme?.overline),
     );
   }
 
@@ -2288,7 +2450,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/samim
+  ///  * https://fontgraphy.ir/
   static TextStyle samim({
     TextStyle textStyle,
     Color color,
@@ -2310,11 +2472,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('samim', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'samim',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'samim',
       color: color,
@@ -2343,23 +2511,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/samim
+  ///  * https://fontgraphy.ir/
   static TextTheme samimTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.samim(textStyle: textTheme?.display4),
-      display3: GoogleFonts.samim(textStyle: textTheme?.display3),
-      display2: GoogleFonts.samim(textStyle: textTheme?.display2),
-      display1: GoogleFonts.samim(textStyle: textTheme?.display1),
-      headline: GoogleFonts.samim(textStyle: textTheme?.headline),
-      title: GoogleFonts.samim(textStyle: textTheme?.title),
-      subhead: GoogleFonts.samim(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.samim(textStyle: textTheme?.body2),
-      body1: GoogleFonts.samim(textStyle: textTheme?.body1),
-      caption: GoogleFonts.samim(textStyle: textTheme?.caption),
-      button: GoogleFonts.samim(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.samim(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.samim(textStyle: textTheme?.overline),
+      display4: Fontgraphy.samim(textStyle: textTheme?.display4),
+      display3: Fontgraphy.samim(textStyle: textTheme?.display3),
+      display2: Fontgraphy.samim(textStyle: textTheme?.display2),
+      display1: Fontgraphy.samim(textStyle: textTheme?.display1),
+      headline: Fontgraphy.samim(textStyle: textTheme?.headline),
+      title: Fontgraphy.samim(textStyle: textTheme?.title),
+      subhead: Fontgraphy.samim(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.samim(textStyle: textTheme?.body2),
+      body1: Fontgraphy.samim(textStyle: textTheme?.body1),
+      caption: Fontgraphy.samim(textStyle: textTheme?.caption),
+      button: Fontgraphy.samim(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.samim(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.samim(textStyle: textTheme?.overline),
     );
   }
 
@@ -2367,7 +2535,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/shabnam
+  ///  * https://fontgraphy.ir/
   static TextStyle shabnam({
     TextStyle textStyle,
     Color color,
@@ -2389,11 +2557,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('shabnam', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'shabnam',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'shabnam',
       color: color,
@@ -2422,23 +2596,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/shabnam
+  ///  * https://fontgraphy.ir/
   static TextTheme shabnamTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.shabnam(textStyle: textTheme?.display4),
-      display3: GoogleFonts.shabnam(textStyle: textTheme?.display3),
-      display2: GoogleFonts.shabnam(textStyle: textTheme?.display2),
-      display1: GoogleFonts.shabnam(textStyle: textTheme?.display1),
-      headline: GoogleFonts.shabnam(textStyle: textTheme?.headline),
-      title: GoogleFonts.shabnam(textStyle: textTheme?.title),
-      subhead: GoogleFonts.shabnam(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.shabnam(textStyle: textTheme?.body2),
-      body1: GoogleFonts.shabnam(textStyle: textTheme?.body1),
-      caption: GoogleFonts.shabnam(textStyle: textTheme?.caption),
-      button: GoogleFonts.shabnam(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.shabnam(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.shabnam(textStyle: textTheme?.overline),
+      display4: Fontgraphy.shabnam(textStyle: textTheme?.display4),
+      display3: Fontgraphy.shabnam(textStyle: textTheme?.display3),
+      display2: Fontgraphy.shabnam(textStyle: textTheme?.display2),
+      display1: Fontgraphy.shabnam(textStyle: textTheme?.display1),
+      headline: Fontgraphy.shabnam(textStyle: textTheme?.headline),
+      title: Fontgraphy.shabnam(textStyle: textTheme?.title),
+      subhead: Fontgraphy.shabnam(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.shabnam(textStyle: textTheme?.body2),
+      body1: Fontgraphy.shabnam(textStyle: textTheme?.body1),
+      caption: Fontgraphy.shabnam(textStyle: textTheme?.caption),
+      button: Fontgraphy.shabnam(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.shabnam(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.shabnam(textStyle: textTheme?.overline),
     );
   }
 
@@ -2446,7 +2620,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/shiraz
+  ///  * https://fontgraphy.ir/
   static TextStyle shiraz({
     TextStyle textStyle,
     Color color,
@@ -2468,11 +2642,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('shiraz', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'shiraz',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'shiraz',
       color: color,
@@ -2501,23 +2681,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/shiraz
+  ///  * https://fontgraphy.ir/
   static TextTheme shirazTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.shiraz(textStyle: textTheme?.display4),
-      display3: GoogleFonts.shiraz(textStyle: textTheme?.display3),
-      display2: GoogleFonts.shiraz(textStyle: textTheme?.display2),
-      display1: GoogleFonts.shiraz(textStyle: textTheme?.display1),
-      headline: GoogleFonts.shiraz(textStyle: textTheme?.headline),
-      title: GoogleFonts.shiraz(textStyle: textTheme?.title),
-      subhead: GoogleFonts.shiraz(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.shiraz(textStyle: textTheme?.body2),
-      body1: GoogleFonts.shiraz(textStyle: textTheme?.body1),
-      caption: GoogleFonts.shiraz(textStyle: textTheme?.caption),
-      button: GoogleFonts.shiraz(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.shiraz(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.shiraz(textStyle: textTheme?.overline),
+      display4: Fontgraphy.shiraz(textStyle: textTheme?.display4),
+      display3: Fontgraphy.shiraz(textStyle: textTheme?.display3),
+      display2: Fontgraphy.shiraz(textStyle: textTheme?.display2),
+      display1: Fontgraphy.shiraz(textStyle: textTheme?.display1),
+      headline: Fontgraphy.shiraz(textStyle: textTheme?.headline),
+      title: Fontgraphy.shiraz(textStyle: textTheme?.title),
+      subhead: Fontgraphy.shiraz(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.shiraz(textStyle: textTheme?.body2),
+      body1: Fontgraphy.shiraz(textStyle: textTheme?.body1),
+      caption: Fontgraphy.shiraz(textStyle: textTheme?.caption),
+      button: Fontgraphy.shiraz(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.shiraz(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.shiraz(textStyle: textTheme?.overline),
     );
   }
 
@@ -2525,7 +2705,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/tabassom
+  ///  * https://fontgraphy.ir/
   static TextStyle tabassom({
     TextStyle textStyle,
     Color color,
@@ -2547,11 +2727,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('tabassom', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'tabassom',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'tabassom',
       color: color,
@@ -2580,23 +2766,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/tabassom
+  ///  * https://fontgraphy.ir/
   static TextTheme tabassomTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.tabassom(textStyle: textTheme?.display4),
-      display3: GoogleFonts.tabassom(textStyle: textTheme?.display3),
-      display2: GoogleFonts.tabassom(textStyle: textTheme?.display2),
-      display1: GoogleFonts.tabassom(textStyle: textTheme?.display1),
-      headline: GoogleFonts.tabassom(textStyle: textTheme?.headline),
-      title: GoogleFonts.tabassom(textStyle: textTheme?.title),
-      subhead: GoogleFonts.tabassom(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.tabassom(textStyle: textTheme?.body2),
-      body1: GoogleFonts.tabassom(textStyle: textTheme?.body1),
-      caption: GoogleFonts.tabassom(textStyle: textTheme?.caption),
-      button: GoogleFonts.tabassom(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.tabassom(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.tabassom(textStyle: textTheme?.overline),
+      display4: Fontgraphy.tabassom(textStyle: textTheme?.display4),
+      display3: Fontgraphy.tabassom(textStyle: textTheme?.display3),
+      display2: Fontgraphy.tabassom(textStyle: textTheme?.display2),
+      display1: Fontgraphy.tabassom(textStyle: textTheme?.display1),
+      headline: Fontgraphy.tabassom(textStyle: textTheme?.headline),
+      title: Fontgraphy.tabassom(textStyle: textTheme?.title),
+      subhead: Fontgraphy.tabassom(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.tabassom(textStyle: textTheme?.body2),
+      body1: Fontgraphy.tabassom(textStyle: textTheme?.body1),
+      caption: Fontgraphy.tabassom(textStyle: textTheme?.caption),
+      button: Fontgraphy.tabassom(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.tabassom(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.tabassom(textStyle: textTheme?.overline),
     );
   }
 
@@ -2604,7 +2790,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/tanha
+  ///  * https://fontgraphy.ir/
   static TextStyle tanha({
     TextStyle textStyle,
     Color color,
@@ -2626,11 +2812,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('tanha', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'tanha',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'tanha',
       color: color,
@@ -2659,23 +2851,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/tanha
+  ///  * https://fontgraphy.ir/
   static TextTheme tanhaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.tanha(textStyle: textTheme?.display4),
-      display3: GoogleFonts.tanha(textStyle: textTheme?.display3),
-      display2: GoogleFonts.tanha(textStyle: textTheme?.display2),
-      display1: GoogleFonts.tanha(textStyle: textTheme?.display1),
-      headline: GoogleFonts.tanha(textStyle: textTheme?.headline),
-      title: GoogleFonts.tanha(textStyle: textTheme?.title),
-      subhead: GoogleFonts.tanha(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.tanha(textStyle: textTheme?.body2),
-      body1: GoogleFonts.tanha(textStyle: textTheme?.body1),
-      caption: GoogleFonts.tanha(textStyle: textTheme?.caption),
-      button: GoogleFonts.tanha(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.tanha(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.tanha(textStyle: textTheme?.overline),
+      display4: Fontgraphy.tanha(textStyle: textTheme?.display4),
+      display3: Fontgraphy.tanha(textStyle: textTheme?.display3),
+      display2: Fontgraphy.tanha(textStyle: textTheme?.display2),
+      display1: Fontgraphy.tanha(textStyle: textTheme?.display1),
+      headline: Fontgraphy.tanha(textStyle: textTheme?.headline),
+      title: Fontgraphy.tanha(textStyle: textTheme?.title),
+      subhead: Fontgraphy.tanha(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.tanha(textStyle: textTheme?.body2),
+      body1: Fontgraphy.tanha(textStyle: textTheme?.body1),
+      caption: Fontgraphy.tanha(textStyle: textTheme?.caption),
+      button: Fontgraphy.tanha(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.tanha(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.tanha(textStyle: textTheme?.overline),
     );
   }
 
@@ -2683,7 +2875,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/tehran
+  ///  * https://fontgraphy.ir/
   static TextStyle tehran({
     TextStyle textStyle,
     Color color,
@@ -2705,11 +2897,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('tehran', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'tehran',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'tehran',
       color: color,
@@ -2738,23 +2936,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/tehran
+  ///  * https://fontgraphy.ir/
   static TextTheme tehranTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.tehran(textStyle: textTheme?.display4),
-      display3: GoogleFonts.tehran(textStyle: textTheme?.display3),
-      display2: GoogleFonts.tehran(textStyle: textTheme?.display2),
-      display1: GoogleFonts.tehran(textStyle: textTheme?.display1),
-      headline: GoogleFonts.tehran(textStyle: textTheme?.headline),
-      title: GoogleFonts.tehran(textStyle: textTheme?.title),
-      subhead: GoogleFonts.tehran(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.tehran(textStyle: textTheme?.body2),
-      body1: GoogleFonts.tehran(textStyle: textTheme?.body1),
-      caption: GoogleFonts.tehran(textStyle: textTheme?.caption),
-      button: GoogleFonts.tehran(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.tehran(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.tehran(textStyle: textTheme?.overline),
+      display4: Fontgraphy.tehran(textStyle: textTheme?.display4),
+      display3: Fontgraphy.tehran(textStyle: textTheme?.display3),
+      display2: Fontgraphy.tehran(textStyle: textTheme?.display2),
+      display1: Fontgraphy.tehran(textStyle: textTheme?.display1),
+      headline: Fontgraphy.tehran(textStyle: textTheme?.headline),
+      title: Fontgraphy.tehran(textStyle: textTheme?.title),
+      subhead: Fontgraphy.tehran(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.tehran(textStyle: textTheme?.body2),
+      body1: Fontgraphy.tehran(textStyle: textTheme?.body1),
+      caption: Fontgraphy.tehran(textStyle: textTheme?.caption),
+      button: Fontgraphy.tehran(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.tehran(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.tehran(textStyle: textTheme?.overline),
     );
   }
 
@@ -2762,7 +2960,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/titrzebr
+  ///  * https://fontgraphy.ir/
   static TextStyle titrzebr({
     TextStyle textStyle,
     Color color,
@@ -2784,11 +2982,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('titrzebr', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'titrzebr',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'titrzebr',
       color: color,
@@ -2817,23 +3021,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/titrzebr
+  ///  * https://fontgraphy.ir/
   static TextTheme titrzebrTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.titrzebr(textStyle: textTheme?.display4),
-      display3: GoogleFonts.titrzebr(textStyle: textTheme?.display3),
-      display2: GoogleFonts.titrzebr(textStyle: textTheme?.display2),
-      display1: GoogleFonts.titrzebr(textStyle: textTheme?.display1),
-      headline: GoogleFonts.titrzebr(textStyle: textTheme?.headline),
-      title: GoogleFonts.titrzebr(textStyle: textTheme?.title),
-      subhead: GoogleFonts.titrzebr(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.titrzebr(textStyle: textTheme?.body2),
-      body1: GoogleFonts.titrzebr(textStyle: textTheme?.body1),
-      caption: GoogleFonts.titrzebr(textStyle: textTheme?.caption),
-      button: GoogleFonts.titrzebr(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.titrzebr(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.titrzebr(textStyle: textTheme?.overline),
+      display4: Fontgraphy.titrzebr(textStyle: textTheme?.display4),
+      display3: Fontgraphy.titrzebr(textStyle: textTheme?.display3),
+      display2: Fontgraphy.titrzebr(textStyle: textTheme?.display2),
+      display1: Fontgraphy.titrzebr(textStyle: textTheme?.display1),
+      headline: Fontgraphy.titrzebr(textStyle: textTheme?.headline),
+      title: Fontgraphy.titrzebr(textStyle: textTheme?.title),
+      subhead: Fontgraphy.titrzebr(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.titrzebr(textStyle: textTheme?.body2),
+      body1: Fontgraphy.titrzebr(textStyle: textTheme?.body1),
+      caption: Fontgraphy.titrzebr(textStyle: textTheme?.caption),
+      button: Fontgraphy.titrzebr(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.titrzebr(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.titrzebr(textStyle: textTheme?.overline),
     );
   }
 
@@ -2841,7 +3045,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/traffic
+  ///  * https://fontgraphy.ir/
   static TextStyle traffic({
     TextStyle textStyle,
     Color color,
@@ -2863,11 +3067,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('traffic', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'traffic',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'traffic',
       color: color,
@@ -2896,23 +3106,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/traffic
+  ///  * https://fontgraphy.ir/
   static TextTheme trafficTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.traffic(textStyle: textTheme?.display4),
-      display3: GoogleFonts.traffic(textStyle: textTheme?.display3),
-      display2: GoogleFonts.traffic(textStyle: textTheme?.display2),
-      display1: GoogleFonts.traffic(textStyle: textTheme?.display1),
-      headline: GoogleFonts.traffic(textStyle: textTheme?.headline),
-      title: GoogleFonts.traffic(textStyle: textTheme?.title),
-      subhead: GoogleFonts.traffic(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.traffic(textStyle: textTheme?.body2),
-      body1: GoogleFonts.traffic(textStyle: textTheme?.body1),
-      caption: GoogleFonts.traffic(textStyle: textTheme?.caption),
-      button: GoogleFonts.traffic(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.traffic(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.traffic(textStyle: textTheme?.overline),
+      display4: Fontgraphy.traffic(textStyle: textTheme?.display4),
+      display3: Fontgraphy.traffic(textStyle: textTheme?.display3),
+      display2: Fontgraphy.traffic(textStyle: textTheme?.display2),
+      display1: Fontgraphy.traffic(textStyle: textTheme?.display1),
+      headline: Fontgraphy.traffic(textStyle: textTheme?.headline),
+      title: Fontgraphy.traffic(textStyle: textTheme?.title),
+      subhead: Fontgraphy.traffic(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.traffic(textStyle: textTheme?.body2),
+      body1: Fontgraphy.traffic(textStyle: textTheme?.body1),
+      caption: Fontgraphy.traffic(textStyle: textTheme?.caption),
+      button: Fontgraphy.traffic(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.traffic(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.traffic(textStyle: textTheme?.overline),
     );
   }
 
@@ -2920,7 +3130,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/vazir
+  ///  * https://fontgraphy.ir/
   static TextStyle vazir({
     TextStyle textStyle,
     Color color,
@@ -2942,11 +3152,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('vazir', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'vazir',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'vazir',
       color: color,
@@ -2975,23 +3191,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/vazir
+  ///  * https://fontgraphy.ir/
   static TextTheme vazirTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.vazir(textStyle: textTheme?.display4),
-      display3: GoogleFonts.vazir(textStyle: textTheme?.display3),
-      display2: GoogleFonts.vazir(textStyle: textTheme?.display2),
-      display1: GoogleFonts.vazir(textStyle: textTheme?.display1),
-      headline: GoogleFonts.vazir(textStyle: textTheme?.headline),
-      title: GoogleFonts.vazir(textStyle: textTheme?.title),
-      subhead: GoogleFonts.vazir(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.vazir(textStyle: textTheme?.body2),
-      body1: GoogleFonts.vazir(textStyle: textTheme?.body1),
-      caption: GoogleFonts.vazir(textStyle: textTheme?.caption),
-      button: GoogleFonts.vazir(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.vazir(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.vazir(textStyle: textTheme?.overline),
+      display4: Fontgraphy.vazir(textStyle: textTheme?.display4),
+      display3: Fontgraphy.vazir(textStyle: textTheme?.display3),
+      display2: Fontgraphy.vazir(textStyle: textTheme?.display2),
+      display1: Fontgraphy.vazir(textStyle: textTheme?.display1),
+      headline: Fontgraphy.vazir(textStyle: textTheme?.headline),
+      title: Fontgraphy.vazir(textStyle: textTheme?.title),
+      subhead: Fontgraphy.vazir(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.vazir(textStyle: textTheme?.body2),
+      body1: Fontgraphy.vazir(textStyle: textTheme?.body1),
+      caption: Fontgraphy.vazir(textStyle: textTheme?.caption),
+      button: Fontgraphy.vazir(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.vazir(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.vazir(textStyle: textTheme?.overline),
     );
   }
 
@@ -2999,7 +3215,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/yagut
+  ///  * https://fontgraphy.ir/
   static TextStyle yagut({
     TextStyle textStyle,
     Color color,
@@ -3021,11 +3237,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('yagut', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'yagut',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'yagut',
       color: color,
@@ -3054,23 +3276,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/yagut
+  ///  * https://fontgraphy.ir/
   static TextTheme yagutTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.yagut(textStyle: textTheme?.display4),
-      display3: GoogleFonts.yagut(textStyle: textTheme?.display3),
-      display2: GoogleFonts.yagut(textStyle: textTheme?.display2),
-      display1: GoogleFonts.yagut(textStyle: textTheme?.display1),
-      headline: GoogleFonts.yagut(textStyle: textTheme?.headline),
-      title: GoogleFonts.yagut(textStyle: textTheme?.title),
-      subhead: GoogleFonts.yagut(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.yagut(textStyle: textTheme?.body2),
-      body1: GoogleFonts.yagut(textStyle: textTheme?.body1),
-      caption: GoogleFonts.yagut(textStyle: textTheme?.caption),
-      button: GoogleFonts.yagut(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.yagut(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.yagut(textStyle: textTheme?.overline),
+      display4: Fontgraphy.yagut(textStyle: textTheme?.display4),
+      display3: Fontgraphy.yagut(textStyle: textTheme?.display3),
+      display2: Fontgraphy.yagut(textStyle: textTheme?.display2),
+      display1: Fontgraphy.yagut(textStyle: textTheme?.display1),
+      headline: Fontgraphy.yagut(textStyle: textTheme?.headline),
+      title: Fontgraphy.yagut(textStyle: textTheme?.title),
+      subhead: Fontgraphy.yagut(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.yagut(textStyle: textTheme?.body2),
+      body1: Fontgraphy.yagut(textStyle: textTheme?.body1),
+      caption: Fontgraphy.yagut(textStyle: textTheme?.caption),
+      button: Fontgraphy.yagut(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.yagut(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.yagut(textStyle: textTheme?.overline),
     );
   }
 
@@ -3078,7 +3300,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/yas
+  ///  * https://fontgraphy.ir/
   static TextStyle yas({
     TextStyle textStyle,
     Color color,
@@ -3100,11 +3322,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('yas', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'yas',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'yas',
       color: color,
@@ -3133,23 +3361,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/yas
+  ///  * https://fontgraphy.ir/
   static TextTheme yasTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.yas(textStyle: textTheme?.display4),
-      display3: GoogleFonts.yas(textStyle: textTheme?.display3),
-      display2: GoogleFonts.yas(textStyle: textTheme?.display2),
-      display1: GoogleFonts.yas(textStyle: textTheme?.display1),
-      headline: GoogleFonts.yas(textStyle: textTheme?.headline),
-      title: GoogleFonts.yas(textStyle: textTheme?.title),
-      subhead: GoogleFonts.yas(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.yas(textStyle: textTheme?.body2),
-      body1: GoogleFonts.yas(textStyle: textTheme?.body1),
-      caption: GoogleFonts.yas(textStyle: textTheme?.caption),
-      button: GoogleFonts.yas(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.yas(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.yas(textStyle: textTheme?.overline),
+      display4: Fontgraphy.yas(textStyle: textTheme?.display4),
+      display3: Fontgraphy.yas(textStyle: textTheme?.display3),
+      display2: Fontgraphy.yas(textStyle: textTheme?.display2),
+      display1: Fontgraphy.yas(textStyle: textTheme?.display1),
+      headline: Fontgraphy.yas(textStyle: textTheme?.headline),
+      title: Fontgraphy.yas(textStyle: textTheme?.title),
+      subhead: Fontgraphy.yas(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.yas(textStyle: textTheme?.body2),
+      body1: Fontgraphy.yas(textStyle: textTheme?.body1),
+      caption: Fontgraphy.yas(textStyle: textTheme?.caption),
+      button: Fontgraphy.yas(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.yas(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.yas(textStyle: textTheme?.overline),
     );
   }
 
@@ -3157,7 +3385,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/yekan
+  ///  * https://fontgraphy.ir/
   static TextStyle yekan({
     TextStyle textStyle,
     Color color,
@@ -3179,11 +3407,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('yekan', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'yekan',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'yekan',
       color: color,
@@ -3212,23 +3446,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/yekan
+  ///  * https://fontgraphy.ir/
   static TextTheme yekanTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.yekan(textStyle: textTheme?.display4),
-      display3: GoogleFonts.yekan(textStyle: textTheme?.display3),
-      display2: GoogleFonts.yekan(textStyle: textTheme?.display2),
-      display1: GoogleFonts.yekan(textStyle: textTheme?.display1),
-      headline: GoogleFonts.yekan(textStyle: textTheme?.headline),
-      title: GoogleFonts.yekan(textStyle: textTheme?.title),
-      subhead: GoogleFonts.yekan(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.yekan(textStyle: textTheme?.body2),
-      body1: GoogleFonts.yekan(textStyle: textTheme?.body1),
-      caption: GoogleFonts.yekan(textStyle: textTheme?.caption),
-      button: GoogleFonts.yekan(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.yekan(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.yekan(textStyle: textTheme?.overline),
+      display4: Fontgraphy.yekan(textStyle: textTheme?.display4),
+      display3: Fontgraphy.yekan(textStyle: textTheme?.display3),
+      display2: Fontgraphy.yekan(textStyle: textTheme?.display2),
+      display1: Fontgraphy.yekan(textStyle: textTheme?.display1),
+      headline: Fontgraphy.yekan(textStyle: textTheme?.headline),
+      title: Fontgraphy.yekan(textStyle: textTheme?.title),
+      subhead: Fontgraphy.yekan(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.yekan(textStyle: textTheme?.body2),
+      body1: Fontgraphy.yekan(textStyle: textTheme?.body1),
+      caption: Fontgraphy.yekan(textStyle: textTheme?.caption),
+      button: Fontgraphy.yekan(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.yekan(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.yekan(textStyle: textTheme?.overline),
     );
   }
 
@@ -3236,7 +3470,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/zar
+  ///  * https://fontgraphy.ir/
   static TextStyle zar({
     TextStyle textStyle,
     Color color,
@@ -3258,11 +3492,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('zar', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'zar',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'zar',
       color: color,
@@ -3291,23 +3531,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/zar
+  ///  * https://fontgraphy.ir/
   static TextTheme zarTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.zar(textStyle: textTheme?.display4),
-      display3: GoogleFonts.zar(textStyle: textTheme?.display3),
-      display2: GoogleFonts.zar(textStyle: textTheme?.display2),
-      display1: GoogleFonts.zar(textStyle: textTheme?.display1),
-      headline: GoogleFonts.zar(textStyle: textTheme?.headline),
-      title: GoogleFonts.zar(textStyle: textTheme?.title),
-      subhead: GoogleFonts.zar(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.zar(textStyle: textTheme?.body2),
-      body1: GoogleFonts.zar(textStyle: textTheme?.body1),
-      caption: GoogleFonts.zar(textStyle: textTheme?.caption),
-      button: GoogleFonts.zar(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.zar(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.zar(textStyle: textTheme?.overline),
+      display4: Fontgraphy.zar(textStyle: textTheme?.display4),
+      display3: Fontgraphy.zar(textStyle: textTheme?.display3),
+      display2: Fontgraphy.zar(textStyle: textTheme?.display2),
+      display1: Fontgraphy.zar(textStyle: textTheme?.display1),
+      headline: Fontgraphy.zar(textStyle: textTheme?.headline),
+      title: Fontgraphy.zar(textStyle: textTheme?.title),
+      subhead: Fontgraphy.zar(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.zar(textStyle: textTheme?.body2),
+      body1: Fontgraphy.zar(textStyle: textTheme?.body1),
+      caption: Fontgraphy.zar(textStyle: textTheme?.caption),
+      button: Fontgraphy.zar(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.zar(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.zar(textStyle: textTheme?.overline),
     );
   }
 
@@ -3315,7 +3555,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/ziba
+  ///  * https://fontgraphy.ir/
   static TextStyle ziba({
     TextStyle textStyle,
     Color color,
@@ -3337,11 +3577,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('ziba', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'ziba',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'ziba',
       color: color,
@@ -3370,23 +3616,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/ziba
+  ///  * https://fontgraphy.ir/
   static TextTheme zibaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.ziba(textStyle: textTheme?.display4),
-      display3: GoogleFonts.ziba(textStyle: textTheme?.display3),
-      display2: GoogleFonts.ziba(textStyle: textTheme?.display2),
-      display1: GoogleFonts.ziba(textStyle: textTheme?.display1),
-      headline: GoogleFonts.ziba(textStyle: textTheme?.headline),
-      title: GoogleFonts.ziba(textStyle: textTheme?.title),
-      subhead: GoogleFonts.ziba(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.ziba(textStyle: textTheme?.body2),
-      body1: GoogleFonts.ziba(textStyle: textTheme?.body1),
-      caption: GoogleFonts.ziba(textStyle: textTheme?.caption),
-      button: GoogleFonts.ziba(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.ziba(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.ziba(textStyle: textTheme?.overline),
+      display4: Fontgraphy.ziba(textStyle: textTheme?.display4),
+      display3: Fontgraphy.ziba(textStyle: textTheme?.display3),
+      display2: Fontgraphy.ziba(textStyle: textTheme?.display2),
+      display1: Fontgraphy.ziba(textStyle: textTheme?.display1),
+      headline: Fontgraphy.ziba(textStyle: textTheme?.headline),
+      title: Fontgraphy.ziba(textStyle: textTheme?.title),
+      subhead: Fontgraphy.ziba(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.ziba(textStyle: textTheme?.body2),
+      body1: Fontgraphy.ziba(textStyle: textTheme?.body1),
+      caption: Fontgraphy.ziba(textStyle: textTheme?.caption),
+      button: Fontgraphy.ziba(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.ziba(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.ziba(textStyle: textTheme?.overline),
     );
   }
 
@@ -3394,7 +3640,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/mikhak
+  ///  * https://fontgraphy.ir/
   static TextStyle mikhak({
     TextStyle textStyle,
     Color color,
@@ -3416,11 +3662,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('mikhak', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'mikhak',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'mikhak',
       color: color,
@@ -3449,23 +3701,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/mikhak
+  ///  * https://fontgraphy.ir/
   static TextTheme mikhakTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.mikhak(textStyle: textTheme?.display4),
-      display3: GoogleFonts.mikhak(textStyle: textTheme?.display3),
-      display2: GoogleFonts.mikhak(textStyle: textTheme?.display2),
-      display1: GoogleFonts.mikhak(textStyle: textTheme?.display1),
-      headline: GoogleFonts.mikhak(textStyle: textTheme?.headline),
-      title: GoogleFonts.mikhak(textStyle: textTheme?.title),
-      subhead: GoogleFonts.mikhak(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.mikhak(textStyle: textTheme?.body2),
-      body1: GoogleFonts.mikhak(textStyle: textTheme?.body1),
-      caption: GoogleFonts.mikhak(textStyle: textTheme?.caption),
-      button: GoogleFonts.mikhak(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.mikhak(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.mikhak(textStyle: textTheme?.overline),
+      display4: Fontgraphy.mikhak(textStyle: textTheme?.display4),
+      display3: Fontgraphy.mikhak(textStyle: textTheme?.display3),
+      display2: Fontgraphy.mikhak(textStyle: textTheme?.display2),
+      display1: Fontgraphy.mikhak(textStyle: textTheme?.display1),
+      headline: Fontgraphy.mikhak(textStyle: textTheme?.headline),
+      title: Fontgraphy.mikhak(textStyle: textTheme?.title),
+      subhead: Fontgraphy.mikhak(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.mikhak(textStyle: textTheme?.body2),
+      body1: Fontgraphy.mikhak(textStyle: textTheme?.body1),
+      caption: Fontgraphy.mikhak(textStyle: textTheme?.caption),
+      button: Fontgraphy.mikhak(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.mikhak(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.mikhak(textStyle: textTheme?.overline),
     );
   }
 
@@ -3473,7 +3725,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/nika
+  ///  * https://fontgraphy.ir/
   static TextStyle nika({
     TextStyle textStyle,
     Color color,
@@ -3495,11 +3747,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('nika', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'nika',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'nika',
       color: color,
@@ -3528,23 +3786,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/nika
+  ///  * https://fontgraphy.ir/
   static TextTheme nikaTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.nika(textStyle: textTheme?.display4),
-      display3: GoogleFonts.nika(textStyle: textTheme?.display3),
-      display2: GoogleFonts.nika(textStyle: textTheme?.display2),
-      display1: GoogleFonts.nika(textStyle: textTheme?.display1),
-      headline: GoogleFonts.nika(textStyle: textTheme?.headline),
-      title: GoogleFonts.nika(textStyle: textTheme?.title),
-      subhead: GoogleFonts.nika(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.nika(textStyle: textTheme?.body2),
-      body1: GoogleFonts.nika(textStyle: textTheme?.body1),
-      caption: GoogleFonts.nika(textStyle: textTheme?.caption),
-      button: GoogleFonts.nika(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.nika(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.nika(textStyle: textTheme?.overline),
+      display4: Fontgraphy.nika(textStyle: textTheme?.display4),
+      display3: Fontgraphy.nika(textStyle: textTheme?.display3),
+      display2: Fontgraphy.nika(textStyle: textTheme?.display2),
+      display1: Fontgraphy.nika(textStyle: textTheme?.display1),
+      headline: Fontgraphy.nika(textStyle: textTheme?.headline),
+      title: Fontgraphy.nika(textStyle: textTheme?.title),
+      subhead: Fontgraphy.nika(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.nika(textStyle: textTheme?.body2),
+      body1: Fontgraphy.nika(textStyle: textTheme?.body1),
+      caption: Fontgraphy.nika(textStyle: textTheme?.caption),
+      button: Fontgraphy.nika(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.nika(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.nika(textStyle: textTheme?.overline),
     );
   }
 
@@ -3552,7 +3810,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/lalezar
+  ///  * https://fontgraphy.ir/
   static TextStyle lalezar({
     TextStyle textStyle,
     Color color,
@@ -3574,11 +3832,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('lalezar', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'lalezar',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'lalezar',
       color: color,
@@ -3607,23 +3871,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/lalezar
+  ///  * https://fontgraphy.ir/
   static TextTheme lalezarTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.lalezar(textStyle: textTheme?.display4),
-      display3: GoogleFonts.lalezar(textStyle: textTheme?.display3),
-      display2: GoogleFonts.lalezar(textStyle: textTheme?.display2),
-      display1: GoogleFonts.lalezar(textStyle: textTheme?.display1),
-      headline: GoogleFonts.lalezar(textStyle: textTheme?.headline),
-      title: GoogleFonts.lalezar(textStyle: textTheme?.title),
-      subhead: GoogleFonts.lalezar(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.lalezar(textStyle: textTheme?.body2),
-      body1: GoogleFonts.lalezar(textStyle: textTheme?.body1),
-      caption: GoogleFonts.lalezar(textStyle: textTheme?.caption),
-      button: GoogleFonts.lalezar(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.lalezar(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.lalezar(textStyle: textTheme?.overline),
+      display4: Fontgraphy.lalezar(textStyle: textTheme?.display4),
+      display3: Fontgraphy.lalezar(textStyle: textTheme?.display3),
+      display2: Fontgraphy.lalezar(textStyle: textTheme?.display2),
+      display1: Fontgraphy.lalezar(textStyle: textTheme?.display1),
+      headline: Fontgraphy.lalezar(textStyle: textTheme?.headline),
+      title: Fontgraphy.lalezar(textStyle: textTheme?.title),
+      subhead: Fontgraphy.lalezar(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.lalezar(textStyle: textTheme?.body2),
+      body1: Fontgraphy.lalezar(textStyle: textTheme?.body1),
+      caption: Fontgraphy.lalezar(textStyle: textTheme?.caption),
+      button: Fontgraphy.lalezar(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.lalezar(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.lalezar(textStyle: textTheme?.overline),
     );
   }
 
@@ -3631,7 +3895,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/iraniansans
+  ///  * https://fontgraphy.ir/
   static TextStyle iraniansans({
     TextStyle textStyle,
     Color color,
@@ -3653,11 +3917,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('iraniansans', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'iraniansans',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'iraniansans',
       color: color,
@@ -3686,23 +3956,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/iraniansans
+  ///  * https://fontgraphy.ir/
   static TextTheme iraniansansTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.iraniansans(textStyle: textTheme?.display4),
-      display3: GoogleFonts.iraniansans(textStyle: textTheme?.display3),
-      display2: GoogleFonts.iraniansans(textStyle: textTheme?.display2),
-      display1: GoogleFonts.iraniansans(textStyle: textTheme?.display1),
-      headline: GoogleFonts.iraniansans(textStyle: textTheme?.headline),
-      title: GoogleFonts.iraniansans(textStyle: textTheme?.title),
-      subhead: GoogleFonts.iraniansans(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.iraniansans(textStyle: textTheme?.body2),
-      body1: GoogleFonts.iraniansans(textStyle: textTheme?.body1),
-      caption: GoogleFonts.iraniansans(textStyle: textTheme?.caption),
-      button: GoogleFonts.iraniansans(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.iraniansans(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.iraniansans(textStyle: textTheme?.overline),
+      display4: Fontgraphy.iraniansans(textStyle: textTheme?.display4),
+      display3: Fontgraphy.iraniansans(textStyle: textTheme?.display3),
+      display2: Fontgraphy.iraniansans(textStyle: textTheme?.display2),
+      display1: Fontgraphy.iraniansans(textStyle: textTheme?.display1),
+      headline: Fontgraphy.iraniansans(textStyle: textTheme?.headline),
+      title: Fontgraphy.iraniansans(textStyle: textTheme?.title),
+      subhead: Fontgraphy.iraniansans(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.iraniansans(textStyle: textTheme?.body2),
+      body1: Fontgraphy.iraniansans(textStyle: textTheme?.body1),
+      caption: Fontgraphy.iraniansans(textStyle: textTheme?.caption),
+      button: Fontgraphy.iraniansans(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.iraniansans(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.iraniansans(textStyle: textTheme?.overline),
     );
   }
 
@@ -3710,7 +3980,7 @@ class GoogleFonts {
   /// given [textStyle].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/vazircode
+  ///  * https://fontgraphy.ir/
   static TextStyle vazircode({
     TextStyle textStyle,
     Color color,
@@ -3732,11 +4002,17 @@ class GoogleFonts {
     TextDecorationStyle decorationStyle,
     double decorationThickness,
   }) {
-    final fonts = <GoogleFontsVariant, GoogleFontsFile>{
-      GoogleFontsVariant(fontWeight: FontWeight.w400, fontStyle: FontStyle.normal,): GoogleFontsFile('vazircode', 0,),
+    final fonts = <FontgraphyVariant, FontgraphyFile>{
+      FontgraphyVariant(
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.normal,
+      ): FontgraphyFile(
+        'vazircode',
+        0,
+      ),
     };
 
-    return googleFontsTextStyle(
+    return fontgraphyTextStyle(
       textStyle: textStyle,
       fontFamily: 'vazircode',
       color: color,
@@ -3765,24 +4041,23 @@ class GoogleFonts {
   /// [TextStyle] in the given [textTheme].
   ///
   /// See:
-  ///  * https://fonts.google.com/specimen/vazircode
+  ///  * https://fontgraphy.ir/
   static TextTheme vazircodeTextTheme([TextTheme textTheme]) {
     textTheme ??= ThemeData.light().textTheme;
     return TextTheme(
-      display4: GoogleFonts.vazircode(textStyle: textTheme?.display4),
-      display3: GoogleFonts.vazircode(textStyle: textTheme?.display3),
-      display2: GoogleFonts.vazircode(textStyle: textTheme?.display2),
-      display1: GoogleFonts.vazircode(textStyle: textTheme?.display1),
-      headline: GoogleFonts.vazircode(textStyle: textTheme?.headline),
-      title: GoogleFonts.vazircode(textStyle: textTheme?.title),
-      subhead: GoogleFonts.vazircode(textStyle: textTheme?.subhead),
-      body2: GoogleFonts.vazircode(textStyle: textTheme?.body2),
-      body1: GoogleFonts.vazircode(textStyle: textTheme?.body1),
-      caption: GoogleFonts.vazircode(textStyle: textTheme?.caption),
-      button: GoogleFonts.vazircode(textStyle: textTheme?.button),
-      subtitle: GoogleFonts.vazircode(textStyle: textTheme?.subtitle),
-      overline: GoogleFonts.vazircode(textStyle: textTheme?.overline),
+      display4: Fontgraphy.vazircode(textStyle: textTheme?.display4),
+      display3: Fontgraphy.vazircode(textStyle: textTheme?.display3),
+      display2: Fontgraphy.vazircode(textStyle: textTheme?.display2),
+      display1: Fontgraphy.vazircode(textStyle: textTheme?.display1),
+      headline: Fontgraphy.vazircode(textStyle: textTheme?.headline),
+      title: Fontgraphy.vazircode(textStyle: textTheme?.title),
+      subhead: Fontgraphy.vazircode(textStyle: textTheme?.subhead),
+      body2: Fontgraphy.vazircode(textStyle: textTheme?.body2),
+      body1: Fontgraphy.vazircode(textStyle: textTheme?.body1),
+      caption: Fontgraphy.vazircode(textStyle: textTheme?.caption),
+      button: Fontgraphy.vazircode(textStyle: textTheme?.button),
+      subtitle: Fontgraphy.vazircode(textStyle: textTheme?.subtitle),
+      overline: Fontgraphy.vazircode(textStyle: textTheme?.overline),
     );
   }
-
 }

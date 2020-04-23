@@ -20,7 +20,7 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Include the contents of your `google_fonts` directory**
+**Include the contents of your `fontgraphy` directory**
 Add contents here.
 
 **Screenshots**

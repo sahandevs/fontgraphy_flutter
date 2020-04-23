@@ -4,21 +4,21 @@
 
 import 'package:flutter/foundation.dart';
 
-import 'google_fonts_family_with_variant.dart';
+import 'fontgraphy_family_with_variant.dart';
 
 /// Describes a Google Fonts API font.
 ///
 /// This class mostly serves as a simple way to keep the connected font
 /// information together.
-class GoogleFontsDescriptor {
-  const GoogleFontsDescriptor({
+class FontgraphyDescriptor {
+  const FontgraphyDescriptor({
     @required this.familyWithVariant,
     @required this.file,
   })  : assert(familyWithVariant != null),
         assert(file != null);
 
-  final GoogleFontsFamilyWithVariant familyWithVariant;
-  final GoogleFontsFile file;
+  final FontgraphyFamilyWithVariant familyWithVariant;
+  final FontgraphyFile file;
 }
 
 /// Describes a font file as it is _expected_ to be received from the server.
@@ -26,8 +26,8 @@ class GoogleFontsDescriptor {
 /// If a file is retrieved and its hash does not match [expectedFileHash], or it
 /// is not of [expectedLength] bytes length, the font will not be loaded, and
 /// the file will not be stored on the device.
-class GoogleFontsFile {
-  GoogleFontsFile(this.family, this.expectedLength);
+class FontgraphyFile {
+  FontgraphyFile(this.family, this.expectedLength);
 
   final String family;
   final int expectedLength;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:fontgraphy/fontgraphy.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'این یک متن آزمایشی می باشد.',
-              style: GoogleFonts.titrzebr(fontSize: 25),
+              style: Fontgraphy.titrzebr(fontSize: 25),
               textDirection: TextDirection.rtl,
             ),
             Text(

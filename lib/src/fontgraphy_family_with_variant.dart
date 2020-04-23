@@ -4,21 +4,21 @@
 
 import 'package:flutter/foundation.dart';
 
-import 'google_fonts_variant.dart';
+import 'fontgraphy_variant.dart';
 
 /// Represents a Google Fonts API variant in Flutter-specific types.
-class GoogleFontsFamilyWithVariant {
-  const GoogleFontsFamilyWithVariant({
+class FontgraphyFamilyWithVariant {
+  const FontgraphyFamilyWithVariant({
     @required this.family,
-    @required this.googleFontsVariant,
+    @required this.fontgraphyVariant,
   })  : assert(family != null),
-        assert(googleFontsVariant != null);
+        assert(fontgraphyVariant != null);
 
   final String family;
-  final GoogleFontsVariant googleFontsVariant;
+  final FontgraphyVariant fontgraphyVariant;
 
   String toApiFilenamePrefix() {
-    return '$family-${googleFontsVariant.toApiFilenamePart()}';
+    return '$family-${fontgraphyVariant.toApiFilenamePart()}';
   }
 
   /// Returns a font family name that is modified with additional [fontWeight]
@@ -27,5 +27,5 @@ class GoogleFontsFamilyWithVariant {
   /// This string is used as a key to the loaded or stored fonts that come
   /// from the Google Fonts API.
   @override
-  String toString() => '${family}_$googleFontsVariant';
+  String toString() => '${family}_$fontgraphyVariant';
 }

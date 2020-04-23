@@ -7,14 +7,14 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 
 /// Represents a Google Fonts API variant in Flutter-specific types.
-class GoogleFontsVariant {
-  const GoogleFontsVariant({
+class FontgraphyVariant {
+  const FontgraphyVariant({
     @required this.fontWeight,
     @required this.fontStyle,
   })  : assert(fontWeight != null),
         assert(fontStyle != null);
 
-  /// Creates a [GoogleFontsVariant] from a Google Fonts API specific
+  /// Creates a [FontgraphyVariant] from a Google Fonts API specific
   /// filename part.
   ///
   /// A filename part is the part of the filename that does not include the
@@ -27,12 +27,12 @@ class GoogleFontsVariant {
   /// 'Bold' -> weight: 700, style: normal
   /// 'BoldItalic' -> weight: 700, style: italic
   ///
-  /// See [GoogleFontsVariant.toApiFilenamePart] for the inverse function.
-  GoogleFontsVariant.fromApiFilenamePart(String filenamePart)
+  /// See [FontgraphyVariant.toApiFilenamePart] for the inverse function.
+  FontgraphyVariant.fromApiFilenamePart(String filenamePart)
       : this.fontWeight = _extractFontWeightFromApiFilenamePart(filenamePart),
         this.fontStyle = _extractFontStyleFromApiFilenamePart(filenamePart);
 
-  /// Creates a [GoogleFontsVariant] from a Google Fonts API specific
+  /// Creates a [FontgraphyVariant] from a Google Fonts API specific
   /// variant name.
   ///
   /// The following table shows how these variant strings convert:
@@ -41,8 +41,8 @@ class GoogleFontsVariant {
   /// '700' -> weight: 700, style: normal
   /// '700italic' -> weight: 700, style: italic
   ///
-  /// See [GoogleFontsVariant.toString] for the inverse function.
-  GoogleFontsVariant.fromString(String variantString)
+  /// See [FontgraphyVariant.toString] for the inverse function.
+  FontgraphyVariant.fromString(String variantString)
       : this.fontWeight = FontWeight.values[variantString == _regular ||
                 variantString == _italic
             ? 3
@@ -78,20 +78,20 @@ class GoogleFontsVariant {
     return FontStyle.normal;
   }
 
-  /// Converts this [GoogleFontsVariant] to a Google Fonts API specific filename
+  /// Converts this [FontgraphyVariant] to a Google Fonts API specific filename
   /// part.
   ///
   /// A Filename part is the part of the filename that does not include the
   /// font family. For example: for the filename "Lato-Regular.ttf", the
   /// filename part is "Regular".
   ///
-  /// The following table shows how these [GoogleFontsVariant]s convert:
+  /// The following table shows how these [FontgraphyVariant]s convert:
   /// weight: 400, style: normal -> 'Regular'
   /// weight: 400, style: italic -> 'Italic'
   /// weight: 700, style: normal -> 'Bold'
   /// weight: 700, style: italic -> 'BoldItalic'
   ///
-  /// See [GoogleFontsVariant.fromApiFilenamePart] for the inverse function.
+  /// See [FontgraphyVariant.fromApiFilenamePart] for the inverse function.
   String toApiFilenamePart() {
     final weightPrefix = _fontWeightToFilenameWeightParts[fontWeight] ??
         _fontWeightToFilenameWeightParts[FontWeight.w400];
@@ -102,7 +102,7 @@ class GoogleFontsVariant {
     return '$weightPrefix$italicSuffix';
   }
 
-  /// Converts this [GoogleFontsVariant] to a Google Fonts API specific variant
+  /// Converts this [FontgraphyVariant] to a Google Fonts API specific variant
   /// name string.
   ///
   /// The following table shows how these variant strings convert:
@@ -111,7 +111,7 @@ class GoogleFontsVariant {
   /// weight: 700, style: normal -> '700'
   /// weight: 700, style: italic -> '700italic'
   ///
-  /// See [GoogleFontsVariant.toString] for the inverse function.
+  /// See [FontgraphyVariant.toString] for the inverse function.
   @override
   String toString() {
     final fontWeightString =
